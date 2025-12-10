@@ -81,3 +81,7 @@ html{
   scrollbar-width: thin;
   scrollbar-color: #00ffff transparent;
 }
+
+button{
+  cursor: pointer;
+}
