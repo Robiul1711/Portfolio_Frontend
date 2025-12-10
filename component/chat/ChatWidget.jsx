@@ -89,7 +89,7 @@ export default function ChatWidget() {
                 <div className="absolute -top-1 -right-1 w-3 h-3 bg-cyan-400 rounded-full animate-ping opacity-75"></div>
               </div>
               <div>
-                <span className="font-bold text-white">Cyber AI Assistant</span>
+                <span className="font-bold text-white">Ashiq's AI Assistant</span>
                 <div className="text-xs text-cyan-400/70 flex items-center gap-1">
                   <Sparkles size={10} />
                   <span>Online • Ready to help</span>
@@ -169,7 +169,7 @@ export default function ChatWidget() {
                       </div>
                     )}
                     <span className="text-xs font-semibold opacity-80">
-                      {msg.role === "user" ? "You" : "Cyber AI"}
+                      {msg.role === "user" ? "You" : "Ashiq's AI"}
                     </span>
                   </div>
                   <div className="leading-relaxed">{msg.content}</div>
