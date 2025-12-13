@@ -54,14 +54,17 @@ const Banner = () => {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="mt-8 flex items-center justify-center gap-4"
         >
-    <CommonButton text="Get Start Now" link="/contact"  />
+          <div className="z-40 flex items-center gap-8">
 
+    <CommonButton text="Get Start Now" link="/contact"  />
           <Link
             href="/contact"
             className="px-6 py-3 rounded-full border border-gray-400/40 hover:border-cyan-400 hover:bg-cyan-400/10 text-gray-700 dark:text-gray-300 font-medium transition"
           >
             Contact Me
           </Link>
+          </div>
+
         </motion.div>
 
         {/* Social Icons */}
