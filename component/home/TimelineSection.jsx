@@ -29,7 +29,7 @@ const timeline = [
 
 const TimelineSection = () => {
   return (
-    <div className="w-full min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-24 px-6">
+    <div className="w-full min-h-screen bg-gradient-to-br from-slate-950 via-slate-950 to-slate-950 py-24 px-6">
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-20">
@@ -50,7 +50,7 @@ const TimelineSection = () => {
         {/* Timeline */}
         <div className="relative">
           {/* Vertical Line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-500/50 via-cyan-400/30 to-transparent md:transform md:-translate-x-1/2"></div>
+          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-200/50 via-cyan-2z00/30 to-transparent md:transform md:-translate-x-1/2"></div>
 
           {timeline.map((item, index) => (
             <div

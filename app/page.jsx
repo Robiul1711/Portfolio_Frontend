@@ -5,6 +5,7 @@ import LightRays from "@/components/LightRays";
 import React from "react";
 import TimelineSection from "@/component/home/TimelineSection";
 import AboutMe from "@/component/home/AboutMe";
+import BlogSection from "@/component/home/BlogSection";
 
 const Home = () => {
   return (
@@ -31,6 +32,7 @@ const Home = () => {
       <div className="">
         <HeroParallaxDemo />
       </div>
+      <BlogSection />
       <TimelineSection />
     </div>
   );
