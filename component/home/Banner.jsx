@@ -32,7 +32,8 @@ const Banner = () => {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="text-4xl md:text-6xl font-bold leading-tight mt-3 text-gray-900 dark:text-white"
         >
-          Hi, I'm <span className="text-cyan-400">Robiul Islam</span>
+          Hi, I'm 
+          {/* <span className="text-cyan-400">Robiul Islam</span> */}
         </motion.h1>
 
         {/* Subtitle */}
