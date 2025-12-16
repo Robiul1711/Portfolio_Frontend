@@ -129,7 +129,7 @@ const AllProjectsGallery =  () => {
   
   // Get unique stacks from projects
 const stackOptions = useMemo(() => {
-  const stacks = new Set(projectsData.map(project => project.stack));
+  const stacks = new Set(projectsData?.map(project => project?.stack));
   return ["all", ...Array.from(stacks).map(item => item.toLowerCase())];
 }, [projectsData]);
 
