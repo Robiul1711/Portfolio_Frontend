@@ -23,7 +23,7 @@ const AboutMe = () => {
   ];
 
   return (
-    <section id="about" className="w-full mt-24 section-padding-x section-padding-y bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
+    <section id="about" className="w-full mt-24 section-padding-x section-padding-y bg-gradient-to-br from-gray-900 to-black">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
