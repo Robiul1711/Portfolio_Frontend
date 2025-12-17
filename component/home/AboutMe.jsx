@@ -152,14 +152,14 @@ export default function AboutPage() {
                 transition={{ type: "spring", stiffness: 200, damping: 15 }}
                 className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
               >
-                {/* <Image
+                <Image
                   src={profileImg}
                   alt="Profile"
                   width={600}
                   height={600}
                   className="w-full h-auto object-cover"
                   priority
-                /> */}
+                />
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                 
                 {/* Floating Tech Icons */}
