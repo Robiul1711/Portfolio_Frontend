@@ -31,8 +31,8 @@ const ThemeToggleButton = ({ className }) => {
       type="button"
       onClick={() => setIsDark(!isDark)}
       className={cn(
-        "rounded-full size-10 sm:size-12 hover:bg-[#262626] cursor-pointer flex items-center justify-center transition-all duration-300 active:scale-95",
-        isDark ? "bg-black text-white" : "bg-[#262626] text-white",
+       
+        isDark ? " text-white" : " text-white",
         className
       )}
     >

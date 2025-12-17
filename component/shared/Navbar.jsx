@@ -8,7 +8,8 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import logo from "@/public/images/logo3.svg";
 import ThemeToggleButton from "../common/ThemeToggleButton";
-
+import { SiGithub } from "react-icons/si";
+import { FaTwitter } from "react-icons/fa";
 const menuItems = [
   {
     label: "Home",
@@ -153,9 +154,16 @@ const Navbar = () => {
       </motion.nav>
 
       {/* Right actions */}
-      <div className="flex items-center gap-4">
-        <ThemeToggleButton />
+      <div className="flex items-center gap-6">
+        <Link href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" >
 
+          <SiGithub  className="text-xl hover:text-Primary duration-300"/>
+        </Link>
+        <Link href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" >
+
+          <FaTwitter  className="text-xl hover:text-Primary duration-300"/>
+        </Link>
+        <ThemeToggleButton />
         {/* Mobile Menu Button */}
         <button
           className="md:hidden p-2 rounded-full hover:bg-white/10 transition"

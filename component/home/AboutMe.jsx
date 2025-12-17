@@ -111,15 +111,16 @@ export default function AboutPage() {
             PASSIONATE DEVELOPER
           </motion.span>
           
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-white via-cyan-200 to-blue-200 bg-clip-text text-transparent mb-6"
-          >
-            Crafting Digital
-            <span className="block mt-2">Experiences</span>
-          </motion.h1>
+     
+         <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+                  Crafting 
+           
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+            Digital  
+            </span>{" "}
+         Experiences
+          </h2>
+         
           
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -151,14 +152,14 @@ export default function AboutPage() {
                 transition={{ type: "spring", stiffness: 200, damping: 15 }}
                 className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
               >
-                <Image
+                {/* <Image
                   src={profileImg}
                   alt="Profile"
                   width={600}
                   height={600}
                   className="w-full h-auto object-cover"
                   priority
-                />
+                /> */}
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                 
                 {/* Floating Tech Icons */}

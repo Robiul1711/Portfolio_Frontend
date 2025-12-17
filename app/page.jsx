@@ -6,6 +6,7 @@ import React from "react";
 import TimelineSection from "@/component/home/TimelineSection";
 import AboutMe from "@/component/home/AboutMe";
 import BlogSection from "@/component/home/BlogSection";
+import GetInTouch from "@/component/home/GetInTouch";
 
 const Home = () => {
   return (
@@ -34,6 +35,7 @@ const Home = () => {
       </div>
       <BlogSection />
       <TimelineSection />
+      <GetInTouch/>
     </div>
   );
 };
