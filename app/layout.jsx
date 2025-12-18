@@ -3,6 +3,7 @@ import Navbar from "@/component/shared/Navbar";
 import Footer from "@/component/shared/Footer";
 import ScrollProgressBar from "@/component/common/ScrollProgressBar";
 import ChatWidget from "@/component/chat/ChatWidget";
+import PreLoader from "@/component/common/Loader";
 
 // 1. Global Metadata Configuration
 export const metadata = {
@@ -61,12 +62,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
+      <PreLoader>
         <ScrollProgressBar />
         <ChatWidget />
         <Navbar />
         {/* Use <main> here if you want it to wrap all pages, or keep it simple */}
         {children}
         <Footer />
+
+      </PreLoader>
       </body>
     </html>
   );
