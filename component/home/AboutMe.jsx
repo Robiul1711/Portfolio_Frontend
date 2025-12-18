@@ -79,17 +79,6 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b  from-[#09161a]/50 to-black text-white overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          style={{ y, opacity }}
-          className="absolute inset-0"
-        >
-          <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
-        </motion.div>
-      </div>
 
       {/* Main Content */}
       <div ref={containerRef} className="relative z-10 section-padding-x py-20 max-w-[1540px] mx-auto">
