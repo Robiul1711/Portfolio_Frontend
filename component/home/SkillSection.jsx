@@ -32,7 +32,7 @@ const skillsLevel = [
 
 const SkillSection = () => {
   return (
-    <div className="w-full section-padding-x section-padding-y text-white">
+    <div className="w-full section-padding-x section-padding-y text-white bg-[#0a0a0a]">
       {/* Heading */}
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold">My Skills</h2>

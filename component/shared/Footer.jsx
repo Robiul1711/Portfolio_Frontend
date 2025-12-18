@@ -40,7 +40,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative border-t border-gray-200/30 dark:border-gray-800/50 bg-gradient-to-b from-transparent to-gray-50/30 dark:to-gray-900/30">
+    <footer className="relative border-t border-gray-800/50 bg-[#050505] bg-gradient-to-b from-transparent  to-gray-900/30 text-white">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -left-40 w-80 h-80 bg-cyan-400/10 rounded-full blur-3xl"></div>
@@ -65,7 +65,7 @@ const Footer = () => {
                   <div className="absolute -inset-3 bg-cyan-400/20 blur-xl rounded-full -z-10"></div>
                 </div>
               </div>
-              <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base  leading-relaxed max-w-md">
+              <p className="text-gray-300 text-sm sm:text-base  leading-relaxed max-w-md">
                 Crafting exceptional digital experiences with modern web
                 technologies. Focused on building scalable, performant
                 applications that make an impact.
@@ -79,21 +79,21 @@ const Footer = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative p-2 sm:p-2.5  rounded-xl  bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm 
-                             border border-gray-200/30 dark:border-gray-700/50 
-                             hover:border-cyan-400/30 hover:bg-cyan-50/30 dark:hover:bg-cyan-900/20
+                    className="group relative p-2 sm:p-2.5  rounded-xl bg-gray-800/50 backdrop-blur-sm 
+                             border border-gray-700/50 
+                             hover:border-cyan-400/30 hover:bg-cyan-900/20
                              transition-all duration-300 hover:scale-105"
                     aria-label={social.label}
                   >
                     <social.icon
                       className=" size-5 sm:size-auto
-                                           group-hover:text-cyan-500 dark:group-hover:text-cyan-400 
+                                          group-hover:text-cyan-400 
                                            transition-colors"
                     />
                     <span
                       className="absolute -bottom-6 left-1/2 -translate-x-1/2 
                                    opacity-0 group-hover:opacity-100 transition-opacity 
-                                   text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap"
+                                   text-xs text-gray-400 whitespace-nowrap"
                     >
                       {social.label}
                     </span>
@@ -104,7 +104,7 @@ const Footer = () => {
 
             {/* Quick links */}
             <div className="lg:col-span-4">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 sm:mb-8">
+              <h3 className="text-xl font-semibold text-white mb-4 sm:mb-8">
                 Quick Links
               </h3>
               <div className="grid grid-cols-2 gap-2 ">
@@ -113,13 +113,13 @@ const Footer = () => {
                     key={link.name}
                     href={link.href}
                     className="group relative py-2  px-4 rounded-xl 
-                             hover:bg-white/50 dark:hover:bg-gray-800/50 
-                             border border-transparent hover:border-gray-200/30 dark:hover:border-gray-700/30
+                            hover:bg-gray-800/50 
+                             border border-transparent hover:border-gray-700/30
                              transition-all duration-300"
                   >
                     <span
-                      className="text-gray-700 dark:text-gray-300 
-                                   group-hover:text-cyan-500 dark:group-hover:text-cyan-400 
+                      className="text-gray-300 
+                                   group-hover:text-cyan-400 
                                    transition-colors font-medium"
                     >
                       {link.name}
@@ -134,10 +134,10 @@ const Footer = () => {
             </div>
             {/* Contact/Newsletter */}
             <div className="lg:col-span-4">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 sm:mb-8">
+              <h3 className="text-xl font-semibold text-white mb-4 sm:mb-8">
                 Let&apos;s Connect
               </h3>
-              <p className="text-gray-600 text-sm sm:text-base  dark:text-gray-300 mb-6">
+              <p className=" text-sm sm:text-base text-gray-300 mb-6">
                 Have a project in mind? Let&apos;s discuss how we can bring your
                 ideas to life.
               </p>
@@ -148,12 +148,12 @@ const Footer = () => {
                     <Mail size={18} />
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider font-bold">
+                    <p className="text-xs text-gray-400 uppercase tracking-wider font-bold">
                       Email
                     </p>
                     <a
                       href="mailto:your@email.com"
-                      className="text-xs  text-gray-700 dark:text-gray-300 hover:text-cyan-400 transition-colors"
+                      className="text-xs  text-gray-300 hover:text-cyan-400 transition-colors"
                     >
                       robiulislam.1711@gmail.com
                     </a>
@@ -165,10 +165,10 @@ const Footer = () => {
                     <MapPin size={18} />
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider font-bold">
+                    <p className="text-xs text-gray-400 uppercase tracking-wider font-bold">
                       Location
                     </p>
-                    <p className="text-xs  text-gray-700 dark:text-gray-300">
+                    <p className="text-xs  text-gray-300">
                       Dhaka, Bangladesh
                     </p>
                   </div>
@@ -178,15 +178,15 @@ const Footer = () => {
           </div>
 
           {/* Divider */}
-          <div className="my-6 sm:my-10 border-t border-gray-200/30 dark:border-gray-800/50"></div>
+          <div className="my-6 sm:my-10 border-t border-gray-800/50"></div>
 
           {/* Bottom section */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="text-center md:text-left">
-              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
+              <p className="text-gray-400 text-sm sm:text-base">
                 © {currentYear} Robiul Islam Ashiq. All rights reserved.
               </p>
-              <p className="text-gray-500 dark:text-gray-500 text-xs sm:text-sm mt-2">
+              <p className="text-gray-500 text-xs sm:text-sm mt-2">
                 Built with using Next.js & Tailwind CSS
               </p>
             </div>
@@ -195,21 +195,21 @@ const Footer = () => {
             <button
               onClick={scrollToTop}
               className="group relative px-4  py-2 rounded-full 
-                       bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm
-                       border border-gray-200/30 dark:border-gray-700/30
-                       hover:border-cyan-400/30 hover:bg-cyan-50/30 dark:hover:bg-cyan-900/20
+                       bg-gray-800/50 backdrop-blur-sm
+                       border border-gray-700/30
+                       hover:border-cyan-400/30 hover:bg-cyan-900/20
                        transition-all duration-300 hover:scale-105"
               aria-label="Back to top"
             >
               <div className="flex items-center gap-2">
                 <ArrowUp
-                  className="size-4 text-gray-700 dark:text-gray-300 
+                  className="size-4 text-gray-300 
                                   group-hover:text-cyan-500 dark:group-hover:text-cyan-400 
                                   transition-colors"
                 />
                 <span
-                  className="text-gray-700 dark:text-gray-300 text-sm 
-                               group-hover:text-cyan-500 dark:group-hover:text-cyan-400 
+                  className="text-gray-300 text-sm 
+                               group-hover:text-cyan-400 
                                font-medium transition-colors"
                 >
                   Back to top

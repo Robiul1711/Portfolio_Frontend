@@ -73,23 +73,23 @@ const Navbar = () => {
       {/* Main Navbar */}
       <header
         className={`
-          fixed w-full top-0 z-[60] section-padding-x py-4 flex justify-between items-center
+          fixed w-full top-0 z-[60] section-padding-x py-3 flex justify-between items-center
           transition-all duration-500
           ${
             scrolled
-              ? "bg-white backdrop-blur-sm shadow-lg dark:bg-black/80 "
+              ? " backdrop-blur-xl shadow-lg bg-black/30 "
               : "bg-transparent"
           }
         `}
       >
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <Image src={logo} alt="logo" width={120} />
+          <Image src={logo} alt="logo" className="w-[100px] sm:w-[120px]" />
         </Link>
 
         {/* Desktop Nav */}
         <motion.nav
-          className="hidden md:block p-2 rounded-full bg-white/10 dark:bg-black/20 backdrop-blur-lg border border-white/20"
+          className="hidden md:block p-2 rounded-full bg-black/20 backdrop-blur-lg border border-white/20"
           initial="initial"
           whileHover="hover"
         >
@@ -142,10 +142,10 @@ const Navbar = () => {
         {/* Right actions */}
         <div className="flex items-center gap-6">
           <Link href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
-            <SiGithub className="text-xl hover:text-cyan-400 duration-300" />
+            <SiGithub className="text-xl text-white hover:text-cyan-400 duration-300" />
           </Link>
           <Link href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
-            <FaTwitter className="text-xl hover:text-cyan-400 duration-300" />
+            <FaTwitter className="text-xl text-white hover:text-cyan-400 duration-300" />
           </Link>
           <ThemeToggleButton />
           <button
