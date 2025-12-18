@@ -23,7 +23,7 @@ const AboutMe = () => {
   ];
 
   return (
-    <section id="about" className="w-full mt-24 section-padding-x section-padding-y ">
+    <section id="about" className="w-full mt-24 section-padding-x section-padding-y bg-gradient-to-b  from-[#09161a]/40 to-black">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -31,7 +31,7 @@ const AboutMe = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 rounded-full text-sm font-medium mb-4"
+            className="inline-block px-4 py-2 bg-cyan-900/30 text-cyan-400 rounded-full text-sm font-medium mb-4"
           >
             ABOUT ME
           </motion.span>
@@ -40,7 +40,7 @@ const AboutMe = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6"
+            className="text-4xl md:text-5xl font-bold text-white mb-6"
           >
             Crafting Digital <span className="text-cyan-500">Excellence</span>
           </motion.h2>
@@ -49,7 +49,7 @@ const AboutMe = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto"
+            className="text-lg text-gray-400 max-w-3xl mx-auto"
           >
             Transforming ideas into exceptional web experiences with modern technologies
           </motion.p>
@@ -65,7 +65,7 @@ const AboutMe = () => {
           >
             <div className="relative w-full max-w-md mx-auto">
               {/* Main Image Container */}
-              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl shadow-cyan-500/20 dark:shadow-cyan-400/10 group">
+              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl shadow-cyan-400/10 group">
                 <Image
                   src={about}
                   alt="Profile"
@@ -86,8 +86,8 @@ const AboutMe = () => {
               </div>
 
               {/* Decorative Elements */}
-              <div className="absolute -top-4 -left-4 w-24 h-24 border-2 border-cyan-300/30 rounded-3xl -z-10" />
-              <div className="absolute -bottom-4 -right-4 w-20 h-20 border-2 border-blue-300/20 rounded-2xl -z-10" />
+              <div className="absolute -top-4 -left-4 w-24 h-24 border-2 border-cyan-300 rounded-3xl -z-10" />
+              <div className="absolute -bottom-4 -right-4 w-20 h-20 border-2 border-blue-300 rounded-2xl -z-10" />
             </div>
 
             {/* Tech Stack Badges */}
@@ -95,7 +95,7 @@ const AboutMe = () => {
               {["React", "Next.js", "Node.js", "MongoDB", "TypeScript"].map((tech) => (
                 <span
                   key={tech}
-                  className="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300 shadow-lg shadow-gray-200 dark:shadow-gray-900"
+                  className="px-4 py-2 bg-gray-800 rounded-full text-sm font-medium text-gray-300 shadow-lg shadow-gray-900"
                 >
                   {tech}
                 </span>
@@ -116,12 +116,12 @@ const AboutMe = () => {
             <div className="space-y-8">
               {/* Introduction */}
               <div>
-                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
                   Full Stack Developer & Problem Solver
                 </h3>
-                <div className="space-y-4 text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
                   <p>
-                    I'm a passionate <span className="font-semibold text-cyan-600 dark:text-cyan-400">MERN Stack Developer</span> with over 3 years of experience in building scalable, high-performance web applications. My expertise lies in creating seamless user experiences with cutting-edge technologies.
+                    I'm a passionate <span className="font-semibold text-cyan-400">MERN Stack Developer</span> with over 3 years of experience in building scalable, high-performance web applications. My expertise lies in creating seamless user experiences with cutting-edge technologies.
                   </p>
                   <p>
                     I believe in writing clean, maintainable code that not only works perfectly but also scales efficiently. My approach combines modern development practices with a keen eye for design, ensuring every project delivers both functionality and aesthetic appeal.
@@ -138,15 +138,15 @@ const AboutMe = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="text-center p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-lg shadow-gray-100 dark:shadow-gray-900"
+                    className="text-center p-4 bg-gray-800 rounded-2xl shadow-lg shadow-gray-900"
                   >
-                    <div className="text-2xl text-cyan-500 dark:text-cyan-400 mb-2 flex justify-center">
+                    <div className="text-2xl text-cyan-400 mb-2 flex justify-center">
                       {stat.icon}
                     </div>
-                    <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
+                    <div className="text-3xl font-bold text-white mb-1">
                       {stat.value}
                     </div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">
+                    <div className="text-sm text-gray-400">
                       {stat.label}
                     </div>
                   </motion.div>
@@ -155,21 +155,21 @@ const AboutMe = () => {
 
               {/* Skills Section */}
               <div>
-                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
+                <h4 className="text-xl font-bold text-white mb-6">
                   Technical Expertise
                 </h4>
                 <div className="space-y-4">
                   {skills?.map((skill) => (
                     <div key={skill.name} className="space-y-2">
                       <div className="flex justify-between">
-                        <span className="text-gray-700 dark:text-gray-300 font-medium">
+                        <span className="text-gray-300 font-medium">
                           {skill.name}
                         </span>
-                        <span className="text-cyan-600 dark:text-cyan-400 font-bold">
+                        <span className="text-cyan-400 font-bold">
                           {skill.level}%
                         </span>
                       </div>
-                      <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                      <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
                           whileInView={{ width: `${skill.level}%` }}
@@ -185,11 +185,11 @@ const AboutMe = () => {
 
               {/* Philosophy */}
               <div className="pt-6">
-                <div className="p-6 bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-900/20 dark:to-blue-900/20 rounded-2xl border border-cyan-100 dark:border-cyan-800">
-                  <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+                <div className="p-6 bg-gradient-to-r from-cyan-50 to-blue-50 from-cyan-900/20 to-blue-900/20 rounded-2xl border border-cyan-800">
+                  <h4 className="text-lg font-bold text-white mb-3">
                     My Development Philosophy
                   </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
+                  <p className="text-gray-300">
                     "I focus on building solutions that are not just functional, but also future-proof. 
                     Every line of code should tell a story of efficiency, scalability, and user-centric design."
                   </p>

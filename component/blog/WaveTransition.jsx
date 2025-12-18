@@ -41,7 +41,7 @@ const WaveTransition = () => {
   const toggleView = () => setIsGrid(!isGrid);
 
   return (
-    <div className="w-full">
+    <div className="w-full ">
       {/* Page Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}

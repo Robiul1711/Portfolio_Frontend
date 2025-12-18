@@ -80,7 +80,7 @@ const Banner = () => {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="mb-6"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-gray-900 dark:text-white">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-white">
             Hi, I'm{" "}
             <span className="relative inline-block">
               <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
@@ -105,7 +105,7 @@ const Banner = () => {
           className="mb-8"
         >
           <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-            <span className="text-gray-700 dark:text-gray-300">I specialize in </span>
+            <span className="text-gray-300">I specialize in </span>
             <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
               <FlipWords
                 words={actionKeywords}
@@ -121,7 +121,7 @@ const Banner = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="mt-6 text-gray-600 dark:text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
+          className="mt-6 text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
         >
           I craft <span className="text-cyan-400 font-medium">high-performance web applications</span> 
           {" "}using the MERN stack, with focus on{" "}
@@ -144,7 +144,7 @@ const Banner = () => {
           <Link
             href="/projects"
             className="px-8 py-2.5 rounded-full border border-gray-400/40 hover:border-cyan-400/60 
-                      hover:bg-cyan-400/10 text-gray-700 dark:text-gray-300 font-medium z-40
+                      hover:bg-cyan-400/10 text-gray-300 font-medium z-40
                       transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
           >
             View My Work
@@ -159,13 +159,13 @@ const Banner = () => {
           transition={{ duration: 0.7, delay: 0.6 }}
           className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6"
         >
-          <div className="bg-gradient-to-r from-gray-800/30 z-40 to-gray-900/30 backdrop-blur-sm rounded-full p-1.5 border border-gray-700/30">
+          <div className="bg-gradient-to-r from-gray-800/30 z-40 to-gray-900/30 backdrop-blur-sm rounded-full p-1 border border-gray-700/30">
             <ReactAudioPlayer
               src="/voice.mp3"
               controls
               className="audio-player"
               style={{
-                filter: "invert(1) brightness(1.3)",
+                filter: "invert(1) brightness(1.2)",
                 width: "280px",
                 height: "40px",
                 maxWidth: "100%",

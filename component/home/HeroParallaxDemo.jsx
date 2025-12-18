@@ -10,10 +10,7 @@ export async function HeroParallaxDemo() {
   return(
     <>
     <HeroParallax products={products} />
-    <div className="w-full flex items-center justify-center mb-10">
-
-       <CommonButton text="All Projects" link="/projects"  />
-    </div>
+   
     </>
   )
 

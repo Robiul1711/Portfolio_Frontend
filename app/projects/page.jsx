@@ -44,7 +44,7 @@ const ProjectsPage = () => {
       />
       
       {/* Use <main> for the primary content of the page */}
-      <main className='pt-28 pb-20 section-padding-x'>
+      <main className='pt-28 pb-20 section-padding-x bg-gradient-to-b  from-[#09161a] to-black'>
 
         {/* The Gallery Component */}
         <section aria-label="Project Gallery">
