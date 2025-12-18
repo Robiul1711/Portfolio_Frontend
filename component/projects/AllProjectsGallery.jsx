@@ -248,13 +248,6 @@ const filteredProjects = useMemo(() => {
     }));
   };
 
-  const buttonHoverAnimation = {
-    scale: 1.05,
-    transition: {
-      stiffness: 400,
-      damping: 10,
-    },
-  };
 
   const cardHoverAnimation = {
     scale: 1.03,
@@ -270,7 +263,7 @@ const filteredProjects = useMemo(() => {
       id="gallery"
       className="py-12 sm:py-16 md:py-20  min-h-screen relative overflow-hidden"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className=" relative z-10">
         <motion.div
           ref={ref}
           variants={containerAnimation}
@@ -342,7 +335,7 @@ const filteredProjects = useMemo(() => {
                 layout
                 key={project._id}
                 variants={itemAnimation}
-                className="relative group cursor-pointer rounded-xl overflow-hidden h-72 sm:h-80 bg-gray-900 border border-gray-800"
+                className="relative group cursor-pointer rounded-xl overflow-hidden h-48 xl:h-58 2xl:h-80 bg-gray-900 border border-gray-800"
                 onClick={() => openProject(project)}
                 whileHover={cardHoverAnimation}
                 initial={{
@@ -567,7 +560,7 @@ const filteredProjects = useMemo(() => {
               )}
 
               <div
-                className={`relative ${isFullscreen ? "h-full" : "h-[450px]"}`}
+                className={`relative ${isFullscreen ? "h-full" : "h-[350px] sm:h-[450px]"}`}
               >
                 <div className="relative w-full h-full">
                   <Image

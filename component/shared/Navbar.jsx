@@ -73,7 +73,7 @@ const Navbar = () => {
       {/* Main Navbar */}
       <header
         className={`
-          fixed w-full top-0 z-[60] section-padding-x py-3 flex justify-between items-center
+          fixed w-full top-0 z-[60] section-padding-x py-4 sm:py-3 flex justify-between items-center
           transition-all duration-500
           ${
             scrolled
@@ -176,7 +176,7 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 200, damping: 25 }}
-              className="fixed top-0 right-0 w-72 h-full bg-slate-50 dark:bg-neutral-950/60 z-[80] p-6 shadow-2xl flex flex-col border-l border-white/10"
+              className="fixed top-0 right-0 w-72 h-full bg-neutral-950/60 z-[80] p-6 shadow-2xl flex flex-col border-l border-white/10"
             >
               <div className="flex justify-between items-center mb-10">
                 <Image src={logo} alt="logo" width={100} />
@@ -197,7 +197,7 @@ const Navbar = () => {
                       onClick={() => setOpenMenu(false)}
                       href={item.href}
                       className={`text-xl font-medium transition-colors ${
-                        isActive ? "text-cyan-400" : "text-gray-600 dark:text-gray-300 hover:text-cyan-400"
+                        isActive ? "text-cyan-400" : "text-gray-300 hover:text-cyan-400"
                       }`}
                     >
                       {item.label}
