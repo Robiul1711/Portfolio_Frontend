@@ -63,7 +63,7 @@ html{
 }
 /* Thin Neon Cyan Scrollbar */
 ::-webkit-scrollbar {
-  width: 2px;
+  width: 2px !important;
 }
 
 ::-webkit-scrollbar-track {

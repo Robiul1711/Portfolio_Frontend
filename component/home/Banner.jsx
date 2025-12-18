@@ -2,94 +2,219 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Sparkles, Code, Zap, Rocket } from "lucide-react";
 import Link from "next/link";
 import CommonButton from "../common/CommonButton";
+import ReactAudioPlayer from "react-audio-player";
+import { FlipWords } from "@/components/ui/flipwords";
 
 const Banner = () => {
+  const programmingKeywords = [
+    "React.js",
+    "Next.js",
+    "Node.js",
+    "TypeScript",
+    "MongoDB",
+    "Express.js",
+    "Tailwind CSS",
+    "GraphQL",
+    "Redux",
+    "WebSocket"
+  ];
+
+  const projectKeywords = [
+    "web apps",
+    "APIs",
+    "dashboards",
+    "e-commerce",
+    "SPAs",
+    "real-time systems",
+    "mobile apps",
+    "CMS",
+    "portfolio sites",
+    "SaaS platforms"
+  ];
+
+  const actionKeywords = [
+    "developing",
+    "architecting",
+    "optimizing",
+    "deploying",
+    "scaling",
+    "debugging",
+    "maintaining",
+    "refactoring",
+    "securing",
+    "automating"
+  ];
+
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center px-6 md:px-20">
-      {/* Glow Background (Soft Blur) */}
-      <div className="absolute inset-0 -z-10 pointer-events-none">
-        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[480px] h-[480px] bg-cyan-400/20 rounded-full blur-[120px]" />
+    <section className="relative w-full min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-20 overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+        {/* Main glow */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] sm:w-[600px] sm:h-[600px] bg-cyan-400/20 rounded-full blur-[140px]" />
+        
+        {/* Floating particles */}
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-cyan-400/40 rounded-full"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+            }}
+            animate={{
+              y: [null, -20, 20, -10],
+              x: [null, 10, -10, 5],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 4,
+              repeat: Infinity,
+              repeatType: "reverse",
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
       </div>
 
-      <div className="text-center max-w-3xl">
-        {/* Label */}
-        <motion.p
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-cyan-400 font-medium tracking-widest uppercase"
-        >
-          MERN Stack Developer
-        </motion.p>
+      {/* Gradient Grid Overlay */}
+      <div className="absolute inset-0 -z-5 bg-gradient-to-b from-transparent via-black/5 to-transparent" />
 
-        {/* Title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 15 }}
+      <div className="text-center max-w-4xl mx-auto">
+        {/* Badge/Label */}
+        <motion.div
+          initial={{ opacity: 0, y: -10, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-400/20 mb-6"
+        >
+          <Sparkles className="w-4 h-4 text-cyan-400" />
+          <span className="text-cyan-400 font-medium text-sm tracking-wider uppercase">
+            Full Stack Developer & Designer
+          </span>
+        </motion.div>
+
+        {/* Main Title */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-4xl md:text-6xl font-bold leading-tight mt-3 text-gray-900 dark:text-white"
+          className="mb-6"
         >
-          Hi, I'm 
-          {/* <span className="text-cyan-400">Robiul Islam</span> */}
-        </motion.h1>
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-gray-900 dark:text-white">
+            Hi, I'm{" "}
+            <span className="relative inline-block">
+              <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Robiul Islam
+              </span>
+              <motion.span
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute -right-6 -top-6 text-cyan-400"
+              >
+                ✦
+              </motion.span>
+            </span>
+          </h1>
+        </motion.div>
 
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
+        {/* Dynamic Text Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="mt-4 text-gray-600 dark:text-gray-300 text-lg md:text-xl"
+          className="mb-8"
         >
-          I build modern, scalable & production-ready web applications using
-          <span className="text-cyan-400 font-medium"> MERN Stack</span>,  
-          with clean UI, optimized backend & powerful dashboards.
-        </motion.p>
-
-        {/* Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="mt-8 flex items-center justify-center gap-4"
-        >
-          <div className="z-40 flex items-center gap-8">
-
-    <CommonButton text="Get Start Now" link="/contact"  />
-          <Link
-            href="/contact"
-            className="px-6 py-3 rounded-full border border-gray-400/40 hover:border-cyan-400 hover:bg-cyan-400/10 text-gray-700 dark:text-gray-300 font-medium transition"
-          >
-            Contact Me
-          </Link>
+          <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+            <span className="text-gray-700 dark:text-gray-300">I specialize in </span>
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+              <FlipWords
+                words={actionKeywords}
+                duration={2000}
+                className="font-bold"
+              />
+            </span>
           </div>
+
 
         </motion.div>
 
-        {/* Social Icons */}
-        <motion.div
+        {/* Description */}
+        <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="mt-10 flex justify-center gap-6"
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="mt-6 text-gray-600 dark:text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
         >
-          <a
-            href="https://github.com"
-            target="_blank"
-            className="text-gray-600 dark:text-gray-300 hover:text-cyan-400 transition"
-          >
-            <Github size={28} />
-          </a>
+          I craft <span className="text-cyan-400 font-medium">high-performance web applications</span> 
+          {" "}using the MERN stack, with focus on{" "}
+          <span className="text-blue-400 font-medium">clean architecture</span>,{" "}
+          <span className="text-purple-400 font-medium">scalable solutions</span>, and{" "}
+          <span className="text-green-400 font-medium">exceptional user experiences</span>.
+        </motion.p>
 
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            className="text-gray-600 dark:text-gray-300 hover:text-cyan-400 transition"
+
+
+        {/* Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
+          className="mt-10 flex flex-col sm:flex-row items-center justify-center z-50 gap-4 hidden sm:flex"
+        >
+             <div  className={"z-50"}>
+
+            <CommonButton text="Get In Touch" link="/contact" />
+             </div>
+
+          
+          <Link
+            href="/projects"
+            className="px-8 py-2.5 rounded-full border border-gray-400/40 hover:border-cyan-400/60 
+                     hover:bg-cyan-400/10 text-gray-700 dark:text-gray-300 font-medium  z-40
+                     transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
           >
-            <Linkedin size={28} />
-          </a>
+            View My Work
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </motion.div>
+
+        {/* Social & Audio */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.6 }}
+          className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6"
+        >
+   
+          {/* Audio Player */}
+          <div className="bg-gradient-to-r from-gray-800/30 z-40 to-gray-900/30 backdrop-blur-sm rounded-full p-1.5 border border-gray-700/30">
+            <ReactAudioPlayer
+              src="/voice.mp3"
+              controls
+              className="audio-player"
+              style={{
+                filter: "invert(1) brightness(1.3)",
+                width: "280px",
+                height: "40px",
+                maxWidth: "100%",
+              }}
+            />
+          </div>
+        </motion.div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 1 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block"
+        >
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-gray-400 text-sm tracking-wider">SCROLL</span>
+            <div className="w-px h-12 bg-gradient-to-b from-cyan-400 to-transparent"></div>
+          </div>
         </motion.div>
       </div>
     </section>

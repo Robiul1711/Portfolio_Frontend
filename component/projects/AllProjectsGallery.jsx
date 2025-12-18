@@ -280,7 +280,7 @@ const filteredProjects = useMemo(() => {
         >
           <motion.h2
             variants={itemAnimation}
-            className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 text-white tracking-tight"
+            className="text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight mb-6 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent"
           >
             My Projects Gallery
           </motion.h2>
@@ -290,7 +290,7 @@ const filteredProjects = useMemo(() => {
           />
           <motion.p
             variants={itemAnimation}
-            className="text-gray-300 max-w-4xl mx-auto text-lg md:text-xl leading-relaxed"
+            className="text-gray-300 max-w-4xl mx-auto sm:text-lg md:text-xl leading-relaxed"
           >
             Explore my portfolio of projects showcasing various technologies and solutions.
  
@@ -301,7 +301,7 @@ const filteredProjects = useMemo(() => {
           variants={containerAnimation}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="mb-12 sm:mb-16"
+          className="mb-10 sm:mb-16"
         >
         <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
   <AnimatePresence>
@@ -312,7 +312,7 @@ const filteredProjects = useMemo(() => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.3, delay: index * 0.1 }}
-        className={`px-4 py-2 rounded cursor-pointer uppercase tracking-wider text-sm font-semibold transition-all duration-300 ${
+        className={`px-4 py-2 rounded cursor-pointer uppercase tracking-wider text-xs  sm:text-smfont-semibold transition-all duration-300 ${
           stack === stackItem
             ? "bg-white text-black"
             : "border border-gray-600 text-gray-200 hover:border-white hover:text-white"

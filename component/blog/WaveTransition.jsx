@@ -43,12 +43,20 @@ const WaveTransition = () => {
   return (
     <div className="w-full">
       {/* Page Header */}
-      <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold text-white">Blog & Insights</h1>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-center mb-16"
+      >
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight mb-6 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent">
+          Blog & Insights <br className="hidden md:block" />
+        </h1>
         <p className="text-gray-400 mt-3 max-w-xl mx-auto">
-          Articles on React, MERN, UI animation, API architecture & modern frontend development.
+          Articles on React, MERN, UI animation, API architecture & modern
+          frontend development.
         </p>
-      </div>
+      </motion.div>
 
       {/* Toggle Button */}
       <div className="flex justify-end mb-10">
@@ -60,7 +68,13 @@ const WaveTransition = () => {
         </button>
       </div>
 
-      <div className={isGrid ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" : "space-y-6"}>
+      <div
+        className={
+          isGrid
+            ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+            : "space-y-6"
+        }
+      >
         {items.map((item, i) => {
           const waveDelay = isGrid
             ? (i % 3) * 0.1 + Math.floor(i / 3) * 0.1
@@ -96,7 +110,9 @@ const WaveTransition = () => {
                 }}
               >
                 {/* Thumbnail */}
-                <div className={`${isGrid ? "w-full" : "w-24 h-24 flex-shrink-0"}`}>
+                <div
+                  className={`${isGrid ? "w-full" : "w-24 h-24 flex-shrink-0"}`}
+                >
                   <Image
                     src={item.thumbnail}
                     alt={item.title}
@@ -108,20 +124,19 @@ const WaveTransition = () => {
 
                 {/* Content */}
                 <div>
-                    <div className="flex items-center justify-between gap-2 mt-4">
-
-                  <motion.h3
-                    layout
-                    className={`${isGrid ? "text-xl " : "text-lg"} 
+                  <div className="flex items-center justify-between gap-2 mt-4">
+                    <motion.h3
+                      layout
+                      className={`${isGrid ? "text-xl " : "text-lg"} 
                     font-semibold text-white group-hover:text-cyan-400 transition`}
-                  >
-                    {item.title}
-                  </motion.h3>
+                    >
+                      {item.title}
+                    </motion.h3>
 
                     <span className="text-xs text-cyan-400 bg-cyan-500/10 px-2 py-1 rounded-full">
                       {item.tag}
                     </span>
-                    </div>
+                  </div>
 
                   <motion.p layout className="text-gray-400 mt-1 text-sm">
                     {item.description}

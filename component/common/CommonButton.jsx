@@ -17,7 +17,7 @@ const CommonButton = ({text,link,icon,iconColor,className}) => {
                   {text}
                 </span>
               </span>
-              <p className="absolute right-6 font-semibold opacity-100 transition-all duration-500 ease-in-out group-hover:-translate-y-8 text-white">
+              <p className="absolute right-6 font-medium opacity-100 transition-all duration-500 ease-in-out group-hover:-translate-y-8 text-white">
              {text}
               </p>
             </div>

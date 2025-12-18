@@ -65,50 +65,59 @@ const ContactAddress = () => {
 
   return (
     <div className="text-white space-y-10">
-      {/* Icon */}
-      <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-[#111] shadow-lg mb-4">
-        <FcBusinessContact className="text-5xl" />
-      </div>
 
-      {/* Title */}
-      <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-        Contact Me
-      </h1>
 
       {/* Subtitle */}
       <p className="text-gray-400 max-w-lg leading-relaxed">
         {contactInfo.subtitle}
       </p>
+{/* Cards */}
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+  
+  {/* Email */}
+  <div className="flex items-center gap-4 p-4 bg-[#0f0f0f] border border-white/10 rounded-xl hover:bg-[#141414] transition">
+    <div className="flex items-center justify-center min-w-[44px] h-[44px] rounded-lg bg-cyan-400/10 text-cyan-400">
+      <Mail className="w-5 h-5 md:w-6 md:h-6" />
+    </div>
+    <div className="min-w-0">
+      <p className="text-sm text-gray-400">Email</p>
+      <p className="font-medium text-white truncate">
+        {contactInfo.email}
+      </p>
+    </div>
+  </div>
 
-      {/* Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
-        <div className="flex items-center gap-4 p-4 bg-[#0f0f0f] border border-white/10 rounded-xl hover:bg-[#141414] transition">
-          <Mail size={22} />
-          <div>
-            <p className="text-sm text-gray-400">Email</p>
-            <p className="font-medium">{contactInfo.email}</p>
-          </div>
-        </div>
+  {/* Phone */}
+  <div className="flex items-center gap-4 p-4 bg-[#0f0f0f] border border-white/10 rounded-xl hover:bg-[#141414] transition">
+    <div className="flex items-center justify-center min-w-[44px] h-[44px] rounded-lg bg-cyan-400/10 text-cyan-400">
+      <Phone className="w-5 h-5 md:w-6 md:h-6" />
+    </div>
+    <div className="min-w-0">
+      <p className="text-sm text-gray-400">Phone</p>
+      <p className="font-medium text-white truncate">
+        {contactInfo.phone}
+      </p>
+    </div>
+  </div>
 
-        <div className="flex items-center gap-4 p-4 bg-[#0f0f0f] border border-white/10 rounded-xl hover:bg-[#141414] transition">
-          <Phone size={22} />
-          <div>
-            <p className="text-sm text-gray-400">Phone</p>
-            <p className="font-medium">{contactInfo.phone}</p>
-          </div>
-        </div>
+  {/* Support */}
+  <div className="flex items-center gap-4 p-4 bg-[#0f0f0f] border border-white/10 rounded-xl hover:bg-[#141414] transition">
+    <div className="flex items-center justify-center min-w-[44px] h-[44px] rounded-lg bg-cyan-400/10 text-cyan-400">
+      <Headphones className="w-5 h-5 md:w-6 md:h-6" />
+    </div>
+    <div className="min-w-0">
+      <p className="text-sm text-gray-400">Support</p>
+      <p className="font-medium text-white truncate">
+        {contactInfo.supportEmail}
+      </p>
+    </div>
+  </div>
 
-        <div className="flex items-center gap-4 p-4 bg-[#0f0f0f] border border-white/10 rounded-xl hover:bg-[#141414] transition">
-          <Headphones size={22} />
-          <div>
-            <p className="text-sm text-gray-400">Support</p>
-            <p className="font-medium">{contactInfo.supportEmail}</p>
-          </div>
-        </div>
-      </div>
+</div>
+
 
       {/* Map */}
-      <div className="relative mt-12 w-full h-[350px] rounded-xl overflow-hidden border border-white/10 shadow-xl">
+      <div className="relative mt-12 w-full h-[200px] xl:h-[300px] rounded-xl overflow-hidden border border-white/10 shadow-xl">
          <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4492.512210123787!2d90.40227107602362!3d23.780965187600955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c73c2ff9fc6f%3A0x8574f66d3a144d88!2sMedona%20Tower!5e1!3m2!1sen!2sbd!4v1765270037420!5m2!1sen!2sbd"
           width="100%"

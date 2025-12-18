@@ -49,10 +49,9 @@ const ContactForm = () => {
 
       // 🌟 Success toast
       toast.success("Message sent successfully!");
-
     } catch (err) {
       console.error("Submit error:", err);
-      
+
       // ❌ Error toast
       toast.error("Failed to send message!");
     }
@@ -61,12 +60,14 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="relative p-10 rounded-2xl bg-[#0a0a0a] border border-white/10 shadow-xl overflow-hidden">
+    <div className="relative p-4 md:p-6 rounded-2xl bg-[#0a0a0a] border border-white/10 shadow-xl overflow-hidden">
       {/* Grid BG */}
-      <div className="absolute inset-0 opacity-[0.08] bg-[url('/images/grid.svg')] bg-repeat pointer-events-none" />
+      <div className=" " />
 
-      <form onSubmit={handleSubmit(onSubmit)} className="relative z-10 space-y-6">
-        
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="relative z-10 space-y-6"
+      >
         {/* Full Name */}
         <div>
           <label className="text-sm text-gray-400">Full name</label>
@@ -74,7 +75,16 @@ const ContactForm = () => {
             {...register("name")}
             type="text"
             placeholder="Your Name"
-            className="w-full mt-2 px-4 py-3 rounded-md bg-[#111] border border-white/10 outline-none"
+            className="
+  w-full mt-2 px-4 py-3 rounded-md
+  bg-[#111] border border-white/10 text-white
+  outline-none
+  transition
+  focus:border-cyan-400
+  focus:ring-2
+  focus:ring-cyan-400/40
+  focus:ring-offset-0
+"
           />
           {errors.name && (
             <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>
@@ -88,7 +98,10 @@ const ContactForm = () => {
             {...register("email")}
             type="email"
             placeholder="your@email.com"
-            className="w-full mt-2 px-4 py-3 rounded-md bg-[#111] border border-white/10 outline-none"
+            className="w-full mt-2 px-4 py-3 rounded-md bg-[#111] border border-white/10 outline-none   focus:border-cyan-400
+  focus:ring-2
+  focus:ring-cyan-400/40
+  focus:ring-offset-0"
           />
           {errors.email && (
             <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
@@ -102,7 +115,10 @@ const ContactForm = () => {
             {...register("address")}
             type="text"
             placeholder="Your Address"
-            className="w-full mt-2 px-4 py-3 rounded-md bg-[#111] border border-white/10 outline-none"
+            className="w-full mt-2 px-4 py-3 rounded-md bg-[#111] border border-white/10 outline-none   focus:border-cyan-400
+  focus:ring-2
+  focus:ring-cyan-400/40
+  focus:ring-offset-0"
           />
         </div>
 
@@ -113,10 +129,15 @@ const ContactForm = () => {
             {...register("message")}
             rows="5"
             placeholder="Type your message here..."
-            className="w-full mt-2 px-4 py-3 rounded-md bg-[#111] border border-white/10 outline-none resize-none"
+            className="w-full mt-2 px-4 py-3 rounded-md bg-[#111] border border-white/10 outline-none resize-none   focus:border-cyan-400
+  focus:ring-2
+  focus:ring-cyan-400/40
+  focus:ring-offset-0"
           />
           {errors.message && (
-            <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>
+            <p className="text-red-500 text-xs mt-1">
+              {errors.message.message}
+            </p>
           )}
         </div>
 
