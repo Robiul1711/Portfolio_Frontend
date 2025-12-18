@@ -1,51 +1,27 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Sparkles, Code, Zap, Rocket } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 import CommonButton from "../common/CommonButton";
 import ReactAudioPlayer from "react-audio-player";
 import { FlipWords } from "@/components/ui/flipwords";
 
 const Banner = () => {
-  const programmingKeywords = [
-    "React.js",
-    "Next.js",
-    "Node.js",
-    "TypeScript",
-    "MongoDB",
-    "Express.js",
-    "Tailwind CSS",
-    "GraphQL",
-    "Redux",
-    "WebSocket"
-  ];
+  const [mounted, setMounted] = useState(false);
 
-  const projectKeywords = [
-    "web apps",
-    "APIs",
-    "dashboards",
-    "e-commerce",
-    "SPAs",
-    "real-time systems",
-    "mobile apps",
-    "CMS",
-    "portfolio sites",
-    "SaaS platforms"
-  ];
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const actionKeywords = [
-    "developing",
-    "architecting",
-    "optimizing",
-    "deploying",
-    "scaling",
-    "debugging",
-    "maintaining",
-    "refactoring",
-    "securing",
-    "automating"
+    "developing scalable apps",
+    "architecting systems",
+    "optimizing performance",
+    "building modern web apps",
+    "deploying products",
+    "crafting experiences",
   ];
 
   return (
@@ -55,27 +31,29 @@ const Banner = () => {
         {/* Main glow */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] sm:w-[600px] sm:h-[600px] bg-cyan-400/20 rounded-full blur-[140px]" />
         
-        {/* Floating particles */}
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-cyan-400/40 rounded-full"
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-            }}
-            animate={{
-              y: [null, -20, 20, -10],
-              x: [null, 10, -10, 5],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 4,
-              repeat: Infinity,
-              repeatType: "reverse",
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
+        {/* Floating Particles - Fixed logic */}
+        {mounted &&
+          [...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-cyan-400/70 rounded-full"
+              style={{
+                // Using percentages ensures they cover the screen without needing window width/height state
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -40, 40, 0],
+                x: [0, 20, -20, 0],
+                opacity: [0.2, 0.6, 0.2],
+              }}
+              transition={{
+                duration: 5 + Math.random() * 5,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+          ))}
       </div>
 
       {/* Gradient Grid Overlay */}
@@ -136,8 +114,6 @@ const Banner = () => {
               />
             </span>
           </div>
-
-
         </motion.div>
 
         {/* Description */}
@@ -154,8 +130,6 @@ const Banner = () => {
           <span className="text-green-400 font-medium">exceptional user experiences</span>.
         </motion.p>
 
-
-
         {/* Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -163,17 +137,15 @@ const Banner = () => {
           transition={{ duration: 0.7, delay: 0.5 }}
           className="mt-10 flex flex-col sm:flex-row items-center justify-center z-50 gap-4 hidden sm:flex"
         >
-             <div  className={"z-50"}>
-
+          <div className="z-50">
             <CommonButton text="Get In Touch" link="/contact" />
-             </div>
+          </div>
 
-          
           <Link
             href="/projects"
             className="px-8 py-2.5 rounded-full border border-gray-400/40 hover:border-cyan-400/60 
-                     hover:bg-cyan-400/10 text-gray-700 dark:text-gray-300 font-medium  z-40
-                     transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
+                      hover:bg-cyan-400/10 text-gray-700 dark:text-gray-300 font-medium z-40
+                      transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
           >
             View My Work
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -187,8 +159,6 @@ const Banner = () => {
           transition={{ duration: 0.7, delay: 0.6 }}
           className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6"
         >
-   
-          {/* Audio Player */}
           <div className="bg-gradient-to-r from-gray-800/30 z-40 to-gray-900/30 backdrop-blur-sm rounded-full p-1.5 border border-gray-700/30">
             <ReactAudioPlayer
               src="/voice.mp3"

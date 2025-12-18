@@ -77,7 +77,7 @@ const Navbar = () => {
           transition-all duration-500
           ${
             scrolled
-              ? "bg-white/80 backdrop-blur-xl shadow-lg dark:bg-black/80 border-b border-white/10"
+              ? "bg-white backdrop-blur-sm shadow-lg dark:bg-black/80 "
               : "bg-transparent"
           }
         `}
