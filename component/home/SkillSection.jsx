@@ -1,30 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import OrbitingSkills from "../common/OrbitingSkills";
-
-import {
-  SiNextdotjs,
-  SiReact,
-  SiNodedotjs,
-  SiMongodb,
-  SiTailwindcss,
+import { 
+  SiNextdotjs, SiReact, SiNodedotjs, 
+  SiMongodb, SiTailwindcss, SiTypescript 
 } from "react-icons/si";
 
-const skills = [
-  "HTML / CSS / Tailwind CSS",
-  "JavaScript (ES6+)",
-  "TypeScript",
-  "React.js / Next.js",
-  "Node.js / Express.js",
-  "MongoDB / Mongoose",
-  "REST API Development",
-  "Framer Motion Animations",
-];
 const skillsLevel = [
   { icon: <SiReact />, name: "React.js", level: 95, color: "#61DAFB" },
-  { icon: <SiNextdotjs />, name: "Next.js", level: 90, color: "#ffff" },
+  { icon: <SiNextdotjs />, name: "Next.js", level: 90, color: "#ffffff" },
+  { icon: <SiTypescript />, name: "TypeScript", level: 85, color: "#3178C6" },
   { icon: <SiNodedotjs />, name: "Node.js", level: 88, color: "#339933" },
   { icon: <SiMongodb />, name: "MongoDB", level: 85, color: "#47A248" },
   { icon: <SiTailwindcss />, name: "Tailwind", level: 94, color: "#06B6D4" },
@@ -32,108 +18,107 @@ const skillsLevel = [
 
 const SkillSection = () => {
   return (
-    <div className="w-full section-padding-x section-padding-y text-white bg-[#0a0a0a]">
-      {/* Heading */}
-      <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold">My Skills</h2>
-        <p className="text-gray-400 mt-3 max-w-xl mx-auto">
-          A mix of frontend UI craftsmanship, backend logic, API architecture,
-          and modern tooling.
-        </p>
-      </div>
+    <div className="w-full py-24 px-6 md:px-12 text-white bg-[#030712] overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Header - Simple & Centered */}
+        <header className="text-center mb-20 space-y-4">
+          <motion.span 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-cyan-400 text-sm font-bold tracking-[0.2em] uppercase"
+          >
+            Technical Stack
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tighter"
+          >
+            Core Expertise.
+          </motion.h2>
+        </header>
 
-      {/* Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        <div className="flex flex-col">
-          {/* LEFT — Skill Map */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            className="flex justify-center"
+        {/* Layout Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          {/* LEFT - Visual Orbit (Glass Card) */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="lg:col-span-5 flex flex-col items-center justify-center sm:p-8 sm:bg-white/[0.02] sm:border sm:border-white/5 sm:rounded-3xl sm:backdrop-blur-3xl "
           >
             <OrbitingSkills />
+            <div className="mt-8 text-center">
+              <h3 className="text-xl font-medium text-gray-300">Modern Ecosystem</h3>
+              <p className="text-gray-500 text-sm mt-2">Specializing in high-performance web architecture</p>
+            </div>
           </motion.div>
-          {/* Skills Progress */}
-          <div className="pt-8">
-            <h3 className="text-2xl font-semibold mb-6 text-gray-200">
-              Technical Expertise
-            </h3>
+
+          {/* RIGHT - Technical Metrics */}
+          <div className="lg:col-span-7 space-y-10">
+            
+            {/* Short Bio */}
             <div className="space-y-4">
+              <h3 className="text-3xl font-bold">Frontend & Backend Mastery</h3>
+              <p className="text-gray-400 text-lg leading-relaxed max-w-2xl">
+                I build full-stack applications with a focus on **scalability**, **clean code**, 
+                and **user-centric animations**. From MERN architecture to advanced Next.js patterns.
+              </p>
+            </div>
+
+            {/* Progress Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
               {skillsLevel.map((skill, idx) => (
                 <motion.div
                   key={skill.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.1 }}
                   viewport={{ once: true }}
-                  className="space-y-2"
+                  className="p-5 bg-white/[0.03] border border-white/5 rounded-2xl group hover:bg-white/[0.05] transition-all"
                 >
-                  <div className="flex justify-between items-center">
+                  <div className="flex justify-between items-center mb-4">
                     <div className="flex items-center gap-3">
-                      <span style={{ color: skill.color }}>{skill.icon}</span>
-                      <span className="font-medium text-gray-200">
-                        {skill.name}
+                      <span className="text-2xl opacity-80 group-hover:opacity-100 transition-opacity" style={{ color: skill.color }}>
+                        {skill.icon}
                       </span>
+                      <span className="font-semibold text-gray-200">{skill.name}</span>
                     </div>
-                    <span className="text-cyan-400 font-bold">
-                      {skill.level}%
-                    </span>
+                    <span className="text-cyan-400 text-sm font-mono">{skill.level}%</span>
                   </div>
-                  <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+
+                  {/* Slim Modern Bar */}
+                  <div className="h-[4px] bg-white/10 rounded-full overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       whileInView={{ width: `${skill.level}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1, delay: 0.3 + idx * 0.1 }}
-                      className="h-full rounded-full"
-                      style={{
-                        background: `linear-gradient(to right, ${skill.color}, ${skill.color}88)`,
+                      transition={{ duration: 1.5, ease: "circOut" }}
+                      className="h-full rounded-full bg-gradient-to-r"
+                      style={{ 
+                        backgroundColor: skill.color,
+                        boxShadow: `0 0 10px ${skill.color}55` 
                       }}
                     />
                   </div>
                 </motion.div>
               ))}
             </div>
+
+            {/* Additional Chips */}
+            <div className="flex flex-wrap gap-3 pt-4">
+              {["RESTful APIs", "Framer Motion", "State Management", "Git / GitHub", "UI/UX Design"].map((item) => (
+                <span 
+                  key={item} 
+                  className="px-4 py-2 bg-cyan-400/5 border border-cyan-400/10 text-cyan-400/80 rounded-full text-xs font-medium hover:bg-cyan-400/10 transition-colors"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+
           </div>
         </div>
-
-        {/* RIGHT — Skill List */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-3xl font-semibold mb-6">Technical Expertise</h3>
-
-          <p className="text-gray-300 leading-relaxed mb-8">
-            I specialize in full-stack development using the MERN stack. I build
-            modern, scalable applications with clean UI, animations, and
-            optimized performance.
-          </p>
-
-          <div className="space-y-4">
-            {skills?.map((skill, index) => (
-              <motion.div
-                key={skill}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.08 }}
-                viewport={{ once: true }}
-                whileHover={{
-                  x: 8,
-                  scale: 1.03,
-                  color: "#22d3ee",
-                }}
-                className="px-4 py-3 border border-white/10 rounded-lg text-gray-300 cursor-pointer bg-[#0c0c0c] hover:border-cyan-400/40 transition-all"
-              >
-                {skill}
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </div>
   );

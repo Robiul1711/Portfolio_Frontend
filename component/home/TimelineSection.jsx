@@ -1,105 +1,123 @@
 import React from 'react';
+import { Briefcase, GraduationCap, Code, Rocket, Award } from 'lucide-react';
 
 const timeline = [
   {
-    year: "2025",
-    title: "Senior MERN Stack Developer",
-    company: "Freelance / Remote",
+    year: "2024 - Present",
+    title: "Frontend Developer",
+    company: "Btopia, Softvence Alpha (Mohakhali)",
     description:
-      "Building full-stack applications with React, Next.js, Node.js, and MongoDB. Focused on modern UI, API architecture, and performance optimization.",
-    skills: ["React", "Next.js", "Node.js", "MongoDB"]
+      "Architecting responsive web applications with React.js and Next.js. Leading the integration of secure JWT authentication and complex state management using Redux and Context API within MERN stack environments.",
+    skills: ["React.js", "Next.js", "JWT", "Redux", "MERN Stack"],
+    status: "Current"
   },
   {
-    year: "2024",
-    title: "Frontend Developer",
-    company: "Self Projects & Collaborations",
+    year: "2023 - 2024",
+    title: "MERN Stack Specialist (Training)",
+    company: "Creative IT Institute",
     description:
-      "Developed responsive UI, implemented animations, improved design systems, and worked on API integrations using React & Tailwind CSS.",
-    skills: ["React", "Tailwind CSS", "API Integration"]
+      "Completed a comprehensive one-year professional training program. Mastered full-stack architecture, focusing on building scalable MongoDB schemas and robust Node/Express backends.",
+    skills: ["MongoDB", "Express.js", "Node.js", "Rest API"],
+  },
+  {
+    year: "2022 - 2024",
+    title: "Guest Teacher (Science)",
+    company: "Government Polytechnic Institute (Faridpur)",
+    description:
+      "Taught Chemistry and Physics to diploma-level students. Improved academic outcomes by translating complex theoretical concepts into practical, real-world engineering applications.",
+    skills: ["Physics", "Chemistry", "Analytical Thinking", "Mentorship"],
   },
   {
     year: "2023",
-    title: "Learner & Junior Developer",
-    company: "Personal Journey",
+    title: "M.Sc. in Chemistry",
+    company: "National University Govt. Rajendra College",
     description:
-      "Started learning full-stack development, practiced building projects, mastered Git, JavaScript, and MERN fundamentals.",
-    skills: ["JavaScript", "Git", "MERN Stack"]
+      "Graduated with a Master of Science, developing strong analytical research skills and a methodical approach to problem-solving that now informs my software debugging and architecture.",
+    skills: ["Analytical Chemistry", "Research", "Scientific Method"],
+    icon: <GraduationCap size={24} />
   },
 ];
 
 const TimelineSection = () => {
   return (
-    <div className="w-full min-h-screen bg-gradient-to-br from-slate-950 via-slate-950 to-slate-950 py-24 px-6">
-      <div className="max-w-5xl mx-auto">
+    <section id="experience" className="relative w-full min-h-screen bg-[#030712] section-padding-y px-4 overflow-hidden">
+      {/* Background Ambient Glows */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/10 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto relative">
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <div className="inline-block mb-4">
-            <span className="text-cyan-400 text-sm font-semibold tracking-widest uppercase border border-cyan-400/30 px-4 py-2 rounded-full bg-cyan-400/5">
-              Career Timeline
-            </span>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
+          <div className="max-w-2xl">
+            <h2 className="text-sm font-bold tracking-[0.3em] text-cyan-400 uppercase mb-4 flex items-center gap-2">
+              <span className="w-8 h-px bg-cyan-400"></span>
+              The Roadmap
+            </h2>
+            <h3 className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-white tracking-tighter">
+              Professional <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+                Experience
+              </span>
+            </h3>
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-            Experience & Journey
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            A timeline of my growth, learning phases, and the professional path
-            that shaped me as a MERN stack developer.
+          <p className="text-slate-400 text-lg md:max-w-xs leading-relaxed border-l border-slate-800 pl-6">
+            From Government educator to Frontend Specialist — a journey of logic, science, and scalable code.
           </p>
         </div>
 
-        {/* Timeline */}
+        {/* Timeline Content */}
         <div className="relative">
-          {/* Vertical Line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-200/50 via-cyan-2z00/30 to-transparent md:transform md:-translate-x-1/2"></div>
+          {/* Main Vertical Axis */}
+          <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-500 via-slate-800 to-transparent"></div>
 
-          {timeline.map((item, index) => (
-            <div
-              key={item.year}
-              className={`relative mb-16 md:mb-24 ${
-                index % 2 === 0 ? 'md:pr-1/2 md:text-right' : 'md:pl-1/2 md:ml-auto'
-              }`}
-            >
-              {/* Timeline Dot */}
-              <div className="absolute left-0 md:left-1/2 w-6 h-6 bg-cyan-400 rounded-full md:transform md:-translate-x-1/2 shadow-[0_0_30px_8px_rgba(34,211,238,0.4)] border-4 border-slate-950 z-10"></div>
+          <div className="space-y-12">
+            {timeline.map((item, index) => (
+              <div key={index} className="relative pl-12 md:pl-20 group">
+                {/* Timeline Node */}
+                <div className="absolute left-[11px] md:left-[27px] top-2">
+                  <div className="w-2.5 h-2.5 rounded-full bg-cyan-500 ring-4 ring-[#030712] shadow-[0_0_15px_rgba(34,211,238,0.8)] z-20 group-hover:scale-150 transition-transform duration-300"></div>
+                </div>
 
-              {/* Content Card */}
-              <div className={`ml-12 md:ml-0 ${index % 2 === 0 ? 'md:mr-12' : 'md:ml-12'}`}>
-                <div className="group relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:border-cyan-400/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]">
-                  {/* Glow Effect on Hover */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-400/0 to-cyan-400/0 group-hover:from-cyan-400/5 group-hover:to-transparent transition-all duration-500"></div>
-                  
-                  <div className="relative z-10">
-                    {/* Year Badge */}
-                    <div className="inline-block mb-4">
-                      <span className="text-cyan-400 font-bold text-xl bg-cyan-400/10 px-4 py-1.5 rounded-lg border border-cyan-400/30">
-                        {item.year}
+                <div className="grid md:grid-cols-[180px_1fr] gap-4 md:gap-12 items-start">
+                  {/* Date/Status Info */}
+                  <div className="flex flex-col pt-1">
+                    <span className="text-xl font-black text-white group-hover:text-cyan-400 transition-colors">
+                      {item.year}
+                    </span>
+                    {item.status && (
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-cyan-400 flex items-center gap-1 mt-1">
+                        <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"></span>
+                        {item.status}
                       </span>
+                    )}
+                  </div>
+
+                  {/* Content Card */}
+                  <div className="bg-white/[0.02] border border-white/5 backdrop-blur-md rounded-3xl p-6 md:p-10 transition-all duration-500 hover:bg-white/[0.04] hover:border-white/10 group-hover:-translate-y-1 shadow-2xl">
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                      <div>
+                        <h4 className="text-2xl font-bold text-white mb-1">
+                          {item.title}
+                        </h4>
+                        <span className="text-cyan-400/80 font-medium flex items-center gap-2">
+                          <Briefcase size={14} /> {item.company}
+                        </span>
+                      </div>
+                      <div className="text-slate-700 group-hover:text-cyan-500/50 transition-colors">
+                         {item.icon || <Code size={24} />}
+                      </div>
                     </div>
 
-                    {/* Title */}
-                    <h3 className="text-3xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300">
-                      {item.title}
-                    </h3>
-
-                    {/* Company */}
-                    <p className="text-gray-400 text-base mb-4 font-medium flex items-center gap-2">
-                      <svg className="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                      </svg>
-                      {item.company}
-                    </p>
-
-                    {/* Description */}
-                    <p className="text-gray-300 leading-relaxed mb-6 text-base">
+                    <p className="text-slate-400 leading-relaxed text-base md:text-lg mb-8 max-w-3xl">
                       {item.description}
                     </p>
 
-                    {/* Skills Tags */}
-                    <div className="flex flex-wrap gap-2">
-                      {item?.skills?.map((skill, i) => (
+                    {/* Skills Grid */}
+                    <div className="flex flex-wrap gap-3">
+                      {item.skills.map((skill, i) => (
                         <span
                           key={i}
-                          className="text-xs font-semibold text-cyan-300 bg-cyan-400/10 px-3 py-1.5 rounded-full border border-cyan-400/20 hover:bg-cyan-400/20 transition-colors duration-300"
+                          className="px-4 py-1.5 rounded-xl text-xs font-bold text-slate-300 bg-slate-900 border border-slate-800 group-hover:border-cyan-500/30 transition-all"
                         >
                           {skill}
                         </span>
@@ -108,19 +126,11 @@ const TimelineSection = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Bottom Fade */}
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center gap-2 text-gray-500 text-sm">
-            <div className="w-2 h-2 bg-cyan-400/50 rounded-full animate-pulse"></div>
-            <span>Currently building the future</span>
+            ))}
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

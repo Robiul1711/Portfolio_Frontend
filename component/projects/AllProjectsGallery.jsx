@@ -479,7 +479,7 @@ const filteredProjects = useMemo(() => {
               className={`relative bg-black w-full overflow-y-auto rounded-xl shadow-xl border border-gray-800 ${
                 isFullscreen
                   ? "max-w-none max-h-none h-full rounded-none"
-                  : "max-w-6xl max-h-[90vh]"
+                  : "max-w-6xl max-h-[85vh]"
               }`}
               initial={{
                 scale: 0.9,
