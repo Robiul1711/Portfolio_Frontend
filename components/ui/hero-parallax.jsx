@@ -114,7 +114,7 @@ export const ProductCard = ({ product, translate }) => {
       key={product?.title}
       className="group/product h-90 w-[30rem] relative shrink-0"
     >
-      <Link href={product?.live || "#"} className="block group-hover/product:shadow-2xl">
+      <Link href={product?.live || "#"} target="_blank" className="block group-hover/product:shadow-2xl">
 
         {/* ✅ Render Image only if src exists */}
         {imageSrc ? (
