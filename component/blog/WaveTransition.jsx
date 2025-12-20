@@ -1,47 +1,39 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import blog from "@/public/images/blog.jpg";
-
-const items = [
-  {
-    id: "1",
-    title: "Mastering React Hook Form",
-    description: "Build perfect forms with RHF + Zod validation.",
-    date: "Jan 12, 2025",
-    slug: "react-hook-form-guide",
-    tag: "React",
-    thumbnail: blog,
-  },
-  {
-    id: "2",
-    title: "Best MERN Folder Structure",
-    description: "Write professional, scalable MERN applications.",
-    date: "Jan 5, 2025",
-    slug: "mern-best-structure",
-    tag: "MERN",
-    thumbnail: blog,
-  },
-  {
-    id: "3",
-    title: "TanStack Query Full Guide",
-    description: "Fetch, cache & manage API data like a professional.",
-    date: "Dec 29, 2024",
-    slug: "tanstack-guide",
-    tag: "React",
-    thumbnail: blog,
-  },
-];
 
 const WaveTransition = () => {
   const [isGrid, setIsGrid] = useState(true);
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const toggleView = () => setIsGrid(!isGrid);
 
+  // 1. Fetch Blogs on Load
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blogs`);
+        if (!response.ok) throw new Error('Failed to fetch blogs');
+        const data = await response.json();
+        setBlogs(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
+
+  if (loading) return <div className="text-center py-20 text-white">Loading awesome content...</div>;
+  if (error) return <div className="text-center py-20 text-red-500">Error: {error}</div>;
+
   return (
-    <div className="w-full ">
+    <div className="w-full max-w-7xl mx-auto px-4 py-10">
       {/* Page Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -53,7 +45,7 @@ const WaveTransition = () => {
           Blog & Insights <br className="hidden md:block" />
         </h1>
         <p className="text-gray-400 mt-3 max-w-xl mx-auto">
-          Articles on React, MERN, UI animation, API architecture & modern
+          AI Generated Articles on React, MERN, UI animation, API architecture & modern
           frontend development.
         </p>
       </motion.div>
@@ -68,6 +60,7 @@ const WaveTransition = () => {
         </button>
       </div>
 
+      {/* Blog Grid/List */}
       <div
         className={
           isGrid
@@ -75,23 +68,22 @@ const WaveTransition = () => {
             : "space-y-6"
         }
       >
-        {items.map((item, i) => {
+        {blogs.map((blog, i) => {
+          // Calculate delay for wave animation
           const waveDelay = isGrid
             ? (i % 3) * 0.1 + Math.floor(i / 3) * 0.1
             : i * 0.1;
 
           return (
             <motion.div
-              key={item.id}
+              key={blog._id} // Use MongoDB _id
               layout
-              initial={false}
+              initial={{ opacity: 0, y: 50 }}
               animate={{
-                y: [0, -20, 0],
-                opacity: [1, 0.5, 1],
-                scale: [1, 0.95, 1],
+                y: 0,
+                opacity: 1,
                 transition: {
-                  duration: 0.6,
-                  times: [0, 0.5, 1],
+                  duration: 0.5,
                   delay: waveDelay,
                 },
               }}
@@ -101,54 +93,71 @@ const WaveTransition = () => {
             >
               <motion.div
                 layout
-                className={`${isGrid ? "p-4" : "p-4 flex items-center gap-4"}`}
-                transition={{
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 25,
-                  delay: waveDelay + 0.3,
-                }}
+                className={`${isGrid ? "p-4" : "p-4 flex items-center gap-6"}`}
               >
                 {/* Thumbnail */}
                 <div
-                  className={`${isGrid ? "w-full" : "w-24 h-24 flex-shrink-0"}`}
+                  className={`${isGrid ? "w-full" : "w-32 h-32 flex-shrink-0"}`}
                 >
-                  <Image
-                    src={item.thumbnail}
-                    alt={item.title}
+                  {/* Using standard img tag to avoid Next.js domain config issues with localhost/external URLs */}
+                  <img
+                    src={blog.image}
+                    alt={blog.title}
                     className={`rounded-lg object-cover 
-                      ${isGrid ? "w-full h-[200px] md:h-[280px]" : "w-24 h-24"} 
-                      group-hover:scale-[1.08] transition-transform duration-500`}
+                      ${isGrid ? "w-full h-[200px] md:h-[240px]" : "w-32 h-32"} 
+                      group-hover:scale-[1.03] transition-transform duration-500`}
                   />
                 </div>
 
                 {/* Content */}
-                <div>
-                  <div className="flex items-center justify-between gap-2 mt-4">
+                <div className="flex-1">
+                  <div className="flex items-center justify-between gap-2 mt-4 mb-2">
                     <motion.h3
                       layout
-                      className={`${isGrid ? "text-xl " : "text-lg"} 
-                    font-semibold text-white group-hover:text-cyan-400 transition`}
+                      className={`${isGrid ? "text-xl" : "text-2xl"} 
+                    font-semibold text-white group-hover:text-cyan-400 line-clamp-2 transition leading-tight`}
                     >
-                      {item.title}
+                      {blog.title}
                     </motion.h3>
 
-                    <span className="text-xs text-cyan-400 bg-cyan-500/10 px-2 py-1 rounded-full">
-                      {item.tag}
-                    </span>
+      
                   </div>
 
-                  <motion.p layout className="text-gray-400 mt-1 text-sm">
-                    {item.description}
+                  <motion.p layout className="text-gray-400 text-sm line-clamp-3">
+                    {blog.excerpt}
                   </motion.p>
 
-                  <div className="text-gray-500 text-xs mt-2">{item.date}</div>
+                  <div className="flex items-center justify-between mt-4">
+                    <div className="text-gray-500 text-xs flex items-center gap-2">
+                      <span>{blog.date}</span>
+                      <span className="w-1 h-1 bg-gray-600 rounded-full"></span>
+                      <span>{blog.readTime}</span>
+                    </div>
+                    
+                    {!isGrid && (
+                       <span className="text-xs text-cyan-400 bg-cyan-500/10 px-2 py-1 rounded-full whitespace-nowrap">
+                       {blog.tag}
+                     </span>
+                    )}
+                                  {/* Tag */}
+                    {isGrid && (
+                      <span className="text-xs text-cyan-400 bg-cyan-500/10 px-2 py-1 rounded-full whitespace-nowrap">
+                        {blog.tag}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             </motion.div>
           );
         })}
       </div>
+      
+      {blogs.length === 0 && !loading && (
+        <div className="text-center text-gray-500 mt-10">
+          No blogs found. Try generating one using the AI Generator!
+        </div>
+      )}
     </div>
   );
 };

@@ -460,7 +460,7 @@ const filteredProjects = useMemo(() => {
       <AnimatePresence>
         {selectedProject && (
           <motion.div
-            className={`fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4 sm:p-6 ${
+            className={`fixed inset-0 z-[999] flex items-center justify-center bg-black/95 p-4 sm:p-6 ${
               isFullscreen ? "p-0" : ""
             }`}
             initial={{

@@ -62,9 +62,11 @@ export default function MainContactPage() {
                 <MessageSquare size={24} />
               </div>
               <div>
-                <h4 className="font-semibold text-white">Live Chat?</h4>
+                <h4 className="font-semibold text-white">Live Chat with Me?</h4>
                 <p className="text-sm text-gray-400">
-                  Usually active on LinkedIn or Twitter.
+                  Prefer real-time communication? Check the Aahiq's AI Chatbot on
+                  the bottom right corner to start a conversation instantly.
+                  
                 </p>
               </div>
             </div>
