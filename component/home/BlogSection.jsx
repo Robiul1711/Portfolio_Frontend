@@ -4,66 +4,73 @@ import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
+import { X, Calendar, Clock, ArrowRight } from "lucide-react"; // Make sure to install lucide-react or use SVGs
+
 gsap.registerPlugin(ScrollTrigger);
-const blogs = [
-  {
-    id: 1,
-    title: "Building a Scalable MERN Stack Application",
-    excerpt:
-      "Learn how to structure and scale a MERN stack application using best practices, clean architecture, and performance optimization.",
-    date: "Aug 12, 2025",
-    readTime: "6 min read",
-    tag: "MERN Stack",
-    image:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c",
-  },
-  {
-    id: 2,
-    title: "Next.js App Router: A Complete Guide",
-    excerpt:
-      "A deep dive into the Next.js App Router, layouts, metadata, and real-world project structure.",
-    date: "Jul 28, 2025",
-    readTime: "5 min read",
-    tag: "Next.js",
-    image:
-      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5",
-  },
-  {
-    id: 3,
-    title: "React Performance Optimization Techniques",
-    excerpt:
-      "Improve React app performance using memoization, code splitting, and rendering optimizations.",
-    date: "Jul 10, 2025",
-    readTime: "7 min read",
-    tag: "React",
-    image:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-  },
-];
 
 const BlogSection = () => {
-    const sectionRef = useRef(null);
-      const titleRef = useRef(null);
+  const [blogs, setBlogs] = useState([]);
+  const [selectedBlog, setSelectedBlog] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // Refs for animation
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   const cardRef = useRef(null);
-    useGSAP(() => {
-    gsap.from([titleRef.current, subtitleRef.current, cardRef.current], {
+
+  // 1. Fetch Data
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blogs`);
+        const data = await response.json();
+        // Limit to 3 blogs for the homepage section if desired
+        setBlogs(data.slice(0, 3)); 
+        setLoading(false);
+      } catch (error) {
+        console.error("Failed to fetch blogs:", error);
+        setLoading(false);
+      }
+    };
+    fetchBlogs();
+  }, []);
+
+  // 2. Animate Only After Loading
+  useGSAP(() => {
+    if (loading) return; // Don't animate until data is ready
+
+    gsap.from([titleRef.current, subtitleRef.current, cardRef.current?.children], {
       y: 50,
       opacity: 0,
       duration: 1,
       ease: "power3.out",
       delay: 0.2,
-      stagger: 0.2,
+      stagger: 0.1,
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top 80%",
         toggleActions: "play none none none",
       },
     });
-  });
+  }, [loading]); // Re-run when loading finishes
+
+  // Modal Handlers
+  const openModal = (blog) => {
+    setSelectedBlog(blog);
+    document.body.style.overflow = "hidden"; // Prevent background scrolling
+  };
+
+  const closeModal = () => {
+    setSelectedBlog(null);
+    document.body.style.overflow = "auto";
+  };
+
+  if (loading) return null; // Or a loading spinner
+
   return (
-    <section ref={sectionRef} id="blog" className="relative bg-[#0B0F19] py-32 px-6 overflow-hidden">
+    <section ref={sectionRef} className="relative bg-[#0B0F19] py-32 px-6 overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[128px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[128px] pointer-events-none" />
@@ -85,18 +92,17 @@ const BlogSection = () => {
 
           <p ref={subtitleRef} className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
             Exploring the frontiers of web development, sharing insights on MERN
-            stack architecture, and documenting the journey of building scalable
-            software.
+            stack architecture, and documenting the journey of building scalable software.
           </p>
         </div>
 
         {/* Blog Grid */}
-        <div ref={cardRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogs.map((blog) => (
-            <Link
-              key={blog.id}
-              href={`/blog/${blog.id}`}
-              className="group block h-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-cyan-500/50 transition-all duration-500 relative"
+            <div
+              key={blog._id}
+              onClick={() => openModal(blog)}
+              className="group block h-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-cyan-500/50 transition-all duration-500 relative cursor-pointer"
             >
               {/* Image */}
               <div className="relative h-56 overflow-hidden">
@@ -106,8 +112,6 @@ const BlogSection = () => {
                   alt={blog.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-
-                {/* Tag */}
                 <div className="absolute top-4 left-4 z-20">
                   <span className="text-xs font-semibold text-white bg-black/50 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10">
                     {blog.tag}
@@ -117,89 +121,110 @@ const BlogSection = () => {
 
               {/* Content */}
               <div className="p-7 flex flex-col h-[calc(100%-14rem)]">
-                {/* Meta */}
                 <div className="flex items-center gap-4 text-xs font-medium text-cyan-400/80 mb-4">
                   <span className="flex items-center gap-1">
-                    <svg
-                      className="w-3 h-3"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                      />
-                    </svg>
-                    {blog.date}
+                    <Calendar className="w-3 h-3" /> {blog.date}
                   </span>
                   <span className="w-1 h-1 rounded-full bg-gray-600" />
                   <span className="flex items-center gap-1">
-                    <svg
-                      className="w-3 h-3"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                    {blog.readTime}
+                    <Clock className="w-3 h-3" /> {blog.readTime}
                   </span>
                 </div>
 
-                {/* Title */}
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors leading-tight">
                   {blog.title}
                 </h3>
 
-                {/* Excerpt */}
-                <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow line-clamp-3">
                   {blog.excerpt}
                 </p>
 
-                {/* Read More */}
                 <div className="flex items-center text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors pt-4 border-t border-white/5">
                   Read Article
-                  <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">
-                    →
-                  </span>
+                  <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
                 </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
 
-        {/* View All */}
+        {/* View All Button */}
         <div className="text-center mt-20">
           <Link href="/blog">
             <button className="group relative px-8 py-3 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 text-cyan-400 font-medium hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.2)] transition-all duration-300">
               <span className="relative z-10 flex items-center gap-2">
                 View All Articles
-                <svg
-                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </span>
             </button>
           </Link>
         </div>
       </div>
+
+      {/* -------------------- BEAUTIFUL MODAL -------------------- */}
+      {selectedBlog && (
+        <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 sm:p-6">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity"
+            onClick={closeModal}
+          />
+
+          {/* Modal Content */}
+          <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-[#0F1623] border border-white/10 rounded-3xl shadow-2xl animate-in fade-in zoom-in duration-300">
+            
+            {/* Close Button */}
+            <button 
+              onClick={closeModal}
+              className="absolute top-4 right-4 z-50 p-2 rounded-full bg-black/50 text-white hover:bg-white/20 transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {/* Modal Image Header */}
+            <div className="relative w-full h-64 sm:h-80 md:h-96">
+              <img 
+                src={selectedBlog.image} 
+                alt={selectedBlog.title} 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0F1623] to-transparent" />
+              
+              <div className="absolute bottom-6 left-6 right-6">
+                 <span className="inline-block px-3 py-1 mb-4 text-xs font-bold text-white bg-cyan-500/80 rounded-full backdrop-blur-md">
+                    {selectedBlog.tag}
+                  </span>
+                  <h2 className="text-2xl md:text-4xl font-bold text-white leading-tight">
+                    {selectedBlog.title}
+                  </h2>
+              </div>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-6 md:p-10 space-y-6">
+              
+              {/* Meta Data */}
+              <div className="flex items-center gap-6 text-sm text-gray-400 border-b border-white/10 pb-6">
+                <span className="flex items-center gap-2">
+                   <Calendar className="w-4 h-4 text-cyan-400" /> {selectedBlog.date}
+                </span>
+                <span className="flex items-center gap-2">
+                   <Clock className="w-4 h-4 text-cyan-400" /> {selectedBlog.readTime}
+                </span>
+              </div>
+
+              {/* Full Description / Content */}
+              <div className="prose prose-invert prose-lg max-w-none text-gray-300">
+                <p className="whitespace-pre-line leading-relaxed">
+                  {selectedBlog.excerpt}
+                </p>
+                {/* Note: If you add a real 'content' field to your DB later, use that here instead of excerpt */}
+              </div>
+
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

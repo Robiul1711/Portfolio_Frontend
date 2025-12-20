@@ -9,7 +9,7 @@ import Image from "next/image";
 import logo from "@/public/images/logo3.svg";
 import ThemeToggleButton from "../common/ThemeToggleButton";
 import { SiGithub } from "react-icons/si";
-import { FaTwitter } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 
 const menuItems = [
   { label: "Home", href: "/" },
@@ -141,15 +141,15 @@ const Navbar = () => {
 
         {/* Right actions */}
         <div className="flex items-center gap-6">
-          <Link href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+          <Link href="https://github.com/Robiul1711" target="_blank" rel="noopener noreferrer">
             <SiGithub className="text-xl text-white hover:text-cyan-400 duration-300" />
           </Link>
-          <Link href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
-            <FaTwitter className="text-xl text-white hover:text-cyan-400 duration-300" />
+          <Link href="https://www.linkedin.com/in/robiulislam-dev/" target="_blank" rel="noopener noreferrer">
+            <FaLinkedin className="text-xl text-white hover:text-cyan-400 duration-300" />
           </Link>
-          <ThemeToggleButton />
+          {/* <ThemeToggleButton /> */}
           <button
-            className="md:hidden  rounded-full hover:bg-white/10 transition"
+            className="  rounded-full hover:bg-white/10 transition"
             onClick={() => setOpenMenu(true)}
           >
             <Menu className="size-7 text-cyan-400" />

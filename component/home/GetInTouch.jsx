@@ -125,7 +125,7 @@ export default function ContactSection() {
                       Email
                     </h3>
                     <p className="text-slate-400 text-xs">
-                      contact@portfolio.dev
+                    robiulislam.1711@gmail.com
                     </p>
                   </div>
                 </div>
@@ -139,7 +139,7 @@ export default function ContactSection() {
                     <h3 className="font-semibold text-slate-200 text-sm">
                       Location
                     </h3>
-                    <p className="text-slate-400 text-xs">Toronto, Canada</p>
+                    <p className="text-slate-400 text-xs">Dhaka, Bangladesh</p>
                   </div>
                 </div>
               </div>
