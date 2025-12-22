@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Download, Sparkles } from "lucide-react";
 import Link from "next/link";
 import CommonButton from "../common/CommonButton";
 import ReactAudioPlayer from "react-audio-player";
@@ -30,7 +30,7 @@ const Banner = () => {
       <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
         {/* Main glow */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] sm:w-[600px] sm:h-[600px] bg-cyan-400/20 rounded-full blur-[140px]" />
-        
+
         {/* Floating Particles - Fixed logic */}
         {mounted &&
           [...Array(20)].map((_, i) => (
@@ -123,11 +123,20 @@ const Banner = () => {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="mt-6 text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
         >
-          I craft <span className="text-cyan-400 font-medium">high-performance web applications</span> 
-          {" "}using the MERN stack, with focus on{" "}
+          I craft{" "}
+          <span className="text-cyan-400 font-medium">
+            high-performance web applications
+          </span>{" "}
+          using the MERN stack, with focus on{" "}
           <span className="text-blue-400 font-medium">clean architecture</span>,{" "}
-          <span className="text-purple-400 font-medium">scalable solutions</span>, and{" "}
-          <span className="text-green-400 font-medium">exceptional user experiences</span>.
+          <span className="text-purple-400 font-medium">
+            scalable solutions
+          </span>
+          , and{" "}
+          <span className="text-green-400 font-medium">
+            exceptional user experiences
+          </span>
+          .
         </motion.p>
 
         {/* Buttons */}
@@ -140,15 +149,27 @@ const Banner = () => {
           <div className="z-50">
             <CommonButton text="Get In Touch" link="/contact" />
           </div>
-
+          {/* <a
+      href="./RobiulIslamResume.pdf" // Path to your file in the 'public' folder
+      download="Robiul_Islam_Resume.pdf" // The name the file will have when downloaded
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center gap-2 px-6 py-3 font-semibold text-white transition-all bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 active:scale-95"
+    >
+      <span>Download Resume</span>
+      <Download size={20} />
+    </a> */}
           <Link
-            href="/projects"
+            href="/RobiulIslamResume.pdf" // Path to your file in the 'public' folder
+            download="RobiulIslamResume.pdf" // The name the file will have when downloaded
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-8 py-2.5 rounded-full border border-gray-400/40 hover:border-cyan-400/60 
                       hover:bg-cyan-400/10 text-gray-300 font-medium z-40
                       transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
           >
-            View My Work
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <span>Download Resume</span>
+            <Download size={20} />
           </Link>
         </motion.div>
 

@@ -53,7 +53,7 @@ const BlogPage = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       
-      <main className='min-h-screen section-padding-x section-padding-y mt-24 bg-gradient-to-b  from-[#09161a]/40 to-black'>
+      <main className='min-h-screen section-padding-x section-padding-y mt-12 bg-gradient-to-b  from-[#09161a]/40 to-black'>
         <WaveTransition />
         
         {/* This is where your blog list component would go */}
