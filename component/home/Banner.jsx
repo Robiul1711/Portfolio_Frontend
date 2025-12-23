@@ -159,18 +159,20 @@ const Banner = () => {
       <span>Download Resume</span>
       <Download size={20} />
     </a> */}
-          <Link
-            href="/RobiulIslamResume.pdf" // Path to your file in the 'public' folder
-            download="RobiulIslamResume.pdf" // The name the file will have when downloaded
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-2.5 rounded-full border border-gray-400/40 hover:border-cyan-400/60 
-                      hover:bg-cyan-400/10 text-gray-300 font-medium z-40
-                      transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
-          >
-            <span>Download Resume</span>
-            <Download size={20} />
-          </Link>
+      <a
+  href="https://drive.google.com/file/d/1CVXsLKUY71ClID9RSpiGm_Pe4ANrSFEj/view?usp=sharing"
+  download
+  target="_blank"
+  rel="noopener noreferrer"
+  className="px-8 py-2.5 rounded-full border border-gray-400/40 
+             hover:border-cyan-400/60 hover:bg-cyan-400/10 
+             text-gray-300 font-medium z-40 transition-all 
+             duration-300 hover:scale-105 flex items-center gap-2 group"
+>
+  <span>Download Resume</span>
+  <Download size={20} />
+</a>
+
         </motion.div>
 
         {/* Social & Audio */}

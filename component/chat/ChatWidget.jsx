@@ -58,20 +58,34 @@ export default function ChatWidget() {
       {/* Floating Robot Icon */}
       {!isOpen && (
         <button
-          className="fixed bottom-6 right-6 cursor-pointer bg-gray-900 text-cyan-400 p-4 z-50 rounded-2xl shadow-2xl hover:shadow-cyan-500/30 hover:bg-gray-800 transition-all duration-300 group animate-float"
+          className="
+    fixed z-50 
+    bottom-4 right-4 
+    sm:bottom-6 sm:right-6 
+    lg:bottom-8 lg:right-10 p-3 xlg:p-4 
+
+    bg-gray-900 text-cyan-400 
+    rounded-2xl shadow-2xl 
+    hover:shadow-cyan-500/30 hover:bg-gray-800 
+    transition-all duration-300 group animate-float 
+    cursor-pointer
+  "
           onClick={() => setIsOpen(true)}
+          aria-label="Open AI Chat"
         >
           <div className="relative">
-            <Bot
-              size={28}
-              className="group-hover:scale-110 transition-transform duration-300"
-            />
+            {/* Responsive Icon Size using Tailwind classes instead of fixed 'size' prop */}
+            <Bot className="w-6 h-6 sm:w-7 sm:h-7 lxg:w-8 xlg:h-8 group-hover:scale-110 transition-transform duration-300" />
+
+            {/* Notification Dot */}
             <div className="absolute -top-1 -right-1">
-              <div className="h-3 w-3 bg-cyan-500 rounded-full animate-pulse"></div>
+              <div className="h-2 w-2 sm:h-3 sm:w-3 bg-cyan-500 rounded-full animate-pulse"></div>
             </div>
           </div>
+
+          {/* Bottom Glow Effect */}
           <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
-            <div className="w-12 h-1 bg-cyan-500/50 rounded-full blur-sm"></div>
+            <div className="w-8 sm:w-12 h-1 bg-cyan-500/50 rounded-full blur-sm"></div>
           </div>
         </button>
       )}
@@ -89,7 +103,9 @@ export default function ChatWidget() {
                 <div className="absolute -top-1 -right-1 w-3 h-3 bg-cyan-400 rounded-full animate-ping opacity-75"></div>
               </div>
               <div>
-                <span className="font-bold text-white">Ashiq's AI Assistant</span>
+                <span className="font-bold text-white">
+                  Ashiq's AI Assistant
+                </span>
                 <div className="text-xs text-cyan-400/70 flex items-center gap-1">
                   <Sparkles size={10} />
                   <span>Online • Ready to help</span>

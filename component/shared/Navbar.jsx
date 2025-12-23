@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Download, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -10,6 +10,7 @@ import logo from "@/public/images/logo3.svg";
 import ThemeToggleButton from "../common/ThemeToggleButton";
 import { SiGithub } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
+import SocialSidebar from "../common/SocialSidebar";
 
 const menuItems = [
   { label: "Home", href: "/" },
@@ -141,15 +142,32 @@ const Navbar = () => {
 
         {/* Right actions */}
         <div className="flex items-center gap-6">
-          <Link href="https://github.com/Robiul1711" target="_blank" rel="noopener noreferrer">
-            <SiGithub className="text-xl text-white hover:text-cyan-400 duration-300" />
-          </Link>
-          <Link href="https://www.linkedin.com/in/robiulislam-dev/" target="_blank" rel="noopener noreferrer">
-            <FaLinkedin className="text-xl text-white hover:text-cyan-400 duration-300" />
-          </Link>
+<a
+            href="https://drive.google.com/file/d/1CVXsLKUY71ClID9RSpiGm_Pe4ANrSFEj/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              group flex items-center gap-2 
+              px-3 py-2 sm:px-6 sm:py-2.5 
+              rounded-full border border-cyan-500/30 bg-cyan-500/5 
+              hover:bg-cyan-500/10 hover:border-cyan-400/60 hover:shadow-[0_0_20px_rgba(34,211,238,0.2)] 
+              transition-all duration-300
+            "
+            title="Download Resume"
+          >
+            {/* Text hidden on mobile, shown on tablet+ */}
+            <span className="hidden sm:block text-sm font-medium text-cyan-400 tracking-wide group-hover:text-cyan-300">
+              Resume
+            </span>
+            
+            {/* Icon always visible */}
+            <Download
+              className="w-4 h-4 sm:w-4 sm:h-4 text-cyan-400 group-hover:text-cyan-300 group-hover:translate-y-0.5 transition-transform duration-300" 
+            />
+          </a>
           {/* <ThemeToggleButton /> */}
           <button
-            className="  rounded-full hover:bg-white/10 transition"
+            className="md:hidden    rounded-full hover:bg-white/10 transition"
             onClick={() => setOpenMenu(true)}
           >
             <Menu className="size-7 text-cyan-400" />
@@ -205,6 +223,7 @@ const Navbar = () => {
                   );
                 })}
               </nav>
+              <SocialSidebar className="flex flex-row justify-center gap-4 mt-auto " />
             </motion.div>
           </>
         )}
