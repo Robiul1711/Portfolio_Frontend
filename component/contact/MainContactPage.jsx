@@ -13,13 +13,13 @@ export default function MainContactPage() {
       <div className="absolute top-20 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="relative section-padding-x section-padding-y mt-20">
+      <div className="relative section-padding-x section-padding-y mt-16">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-full mx-auto text-center mb-4 sm:mb-16 md:mb-24"
+          className="w-full mx-auto text-center mb-4 sm:mb-16 md:mb-20"
         >
           {/* Badge Style Icon */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6 backdrop-blur-md">
@@ -30,7 +30,7 @@ export default function MainContactPage() {
           </div>
    
 
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight mb-6 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-7xl font-extrabold tracking-tight mb-6 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent">
             Let&apos;s Build Something <br className="hidden md:block" />{" "}
             Together
           </h1>

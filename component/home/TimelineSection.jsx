@@ -53,14 +53,14 @@ const TimelineSection = () => {
               <span className="w-8 h-px bg-cyan-400"></span>
               The Roadmap
             </h2>
-            <h3 className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-white tracking-tighter">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-7xl font-bold text-white tracking-tighter">
               Professional <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
                 Experience
               </span>
             </h3>
           </div>
-          <p className="text-slate-400 text-lg md:max-w-xs leading-relaxed border-l border-slate-800 pl-6">
+          <p className="text-slate-400 2xl:text-lg md:max-w-xs leading-relaxed border-l border-slate-800 pl-6">
             From Government educator to Frontend Specialist — a journey of logic, science, and scalable code.
           </p>
         </div>

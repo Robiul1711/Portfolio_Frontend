@@ -90,7 +90,7 @@ const Navbar = () => {
 
         {/* Desktop Nav */}
         <motion.nav
-          className="hidden md:block p-2 rounded-full bg-black/20 backdrop-blur-lg border border-white/20"
+          className="hidden md:block p-1 px-2 2xl:p-2 rounded-full bg-black/20 backdrop-blur-lg border border-white/20"
           initial="initial"
           whileHover="hover"
         >

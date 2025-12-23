@@ -9,9 +9,9 @@ const CommonButton = ({text,link,icon,iconColor,className}) => {
           >
             <div
               className="relative flex items-center overflow-hidden"
-              style={{ minWidth: "180px" }}
+              style={{ minWidth: "170px" }}
             >
-              <span className="flex h-11 w-11 items-center rounded-full bg-Primary px-3 transition-all duration-500 ease-in-out group-hover:w-full group-hover:justify-between">
+              <span className="flex h-9 w-9 2xl:w-11 2xl:h-11 items-center rounded-full bg-Primary px-3 transition-all duration-500 ease-in-out group-hover:w-full group-hover:justify-between">
                 <FaArrowRightLong className="text-black transform translate-x-0 transition-transform duration-500 ease-in-out group-hover:translate-x-2" />
                 <span className="absolute right-6 translate-y-8 font-semibold text-black transition-all duration-500 ease-in-out group-hover:translate-y-0">
                   {text}

@@ -61,8 +61,8 @@ export default function ChatWidget() {
           className="
     fixed z-50 
     bottom-4 right-4 
-    sm:bottom-6 sm:right-6 
-    lg:bottom-8 lg:right-10 p-3 xlg:p-4 
+    sm:bottom-5 sm:right-5 
+     p-3 2xl:p-4 
 
     bg-gray-900 text-cyan-400 
     rounded-2xl shadow-2xl 

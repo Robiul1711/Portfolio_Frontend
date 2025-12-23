@@ -94,14 +94,14 @@ export default function AboutPage() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="inline-block px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 rounded-full text-cyan-300 text-sm font-medium mb-6"
+            className="inline-block px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 rounded-full text-cyan-300 text-xs 2xl:text-sm font-medium mb-6"
           >
             <FiCoffee className="inline mr-2" />
             PASSIONATE DEVELOPER
           </motion.span>
           
      
-         <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+         <h2 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-7xl font-bold text-white mb-6 tracking-tight">
                   Crafting 
            
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
