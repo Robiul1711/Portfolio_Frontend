@@ -82,7 +82,7 @@ const BlogSection = () => {
             Insights
           </span>
 
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-7xl font-bold text-white mb-6 tracking-tight">
             Writing &{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
               Knowledge

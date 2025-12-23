@@ -83,7 +83,7 @@ export default function ContactSection() {
             </span>
             <div className="w-16 h-0.5 bg-gradient-to-r from-cyan-500 to-transparent ml-4"></div>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-7xl font-bold text-white mb-6 tracking-tight">
             Let&apos;s{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">
               Connect

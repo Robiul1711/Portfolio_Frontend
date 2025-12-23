@@ -22,7 +22,7 @@ const SocialSidebar = ({ className = "" }) => {
   ];
 
   // Default styles for the fixed Desktop Sidebar
-  const defaultSidebarClasses = "fixed bottom-6 left-6 hidden md:flex flex-col items-center gap-6 z-50";
+  const defaultSidebarClasses = "fixed bottom-5 left-4 hidden md:flex flex-col items-center gap-6 z-50";
   
   // If a custom className is passed (like from Mobile Menu), we use that.
   // Otherwise, we use the default fixed sidebar styles.
@@ -49,10 +49,7 @@ const SocialSidebar = ({ className = "" }) => {
         ))}
       </ul>
       
-      {/* Only show vertical line if it's the default vertical sidebar */}
-      {!className && (
-         <div className="w-[1px] h-24 bg-gray-500/50 mx-auto mt-2"></div>
-      )}
+
     </div>
   );
 };

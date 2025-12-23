@@ -81,7 +81,7 @@ const WaveTransition = () => {
   if (error) return <div className="text-center py-20 text-red-500">Error: {error}</div>;
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 py-10">
+    <div className="w-full max-w-7xl mx-auto  py-20">
       {/* Page Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -89,7 +89,7 @@ const WaveTransition = () => {
         transition={{ duration: 0.5 }}
         className="text-center mb-16"
       >
-        <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight mb-6 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-7xl font-extrabold tracking-tight mb-6 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent">
           Blog & Insights <br className="hidden md:block" />
         </h1>
         <p className="text-gray-400 mt-3 max-w-xl mx-auto">
@@ -98,10 +98,10 @@ const WaveTransition = () => {
       </motion.div>
 
       {/* Toggle Button */}
-      <div className="flex justify-end mb-10">
+      <div className="flex justify-end mb-8">
         <button
           onClick={toggleView}
-          className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+          className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white px-3 2xl:px-4 py-1 2xl:py-2 rounded-lg font-medium transition-colors"
         >
           {isGrid ? "Switch to List" : "Switch to Grid"}
         </button>

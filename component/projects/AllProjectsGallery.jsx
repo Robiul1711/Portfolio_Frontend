@@ -261,7 +261,7 @@ const filteredProjects = useMemo(() => {
   return (
     <section
       id="gallery"
-      className="py-12 sm:py-16 md:py-20  min-h-screen relative overflow-hidden"
+      className="py-20  min-h-screen relative overflow-hidden"
     >
       <div className=" relative z-10">
         <motion.div
@@ -269,11 +269,11 @@ const filteredProjects = useMemo(() => {
           variants={containerAnimation}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-8"
         >
           <motion.h2
             variants={itemAnimation}
-            className="text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight mb-6 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent"
+            className="text-3xl sm:text-4xl md:text-5xl 2xl:text-7xl font-extrabold tracking-tight mb-6 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent"
           >
             My Projects Gallery
           </motion.h2>
