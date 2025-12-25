@@ -56,7 +56,7 @@ export const HeroParallax = ({ products }) => {
         }}
         className=""
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb:12 xl:mb-20">
           {firstRow?.map((product, i) => (
             <ProductCard
               product={product}
@@ -65,7 +65,7 @@ export const HeroParallax = ({ products }) => {
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row  mb-20 space-x-20 ">
+        <motion.div className="flex flex-row  mb:12 xl:mb-20 space-x-20 ">
           {secondRow?.map((product, i ) => (
             <ProductCard
 
@@ -123,7 +123,7 @@ export const ProductCard = ({ product, translate }) => {
             alt={product?.title || "Project Image"}
             width={600}
             height={600}
-            className="object-cover object-top-left absolute h-full w-full inset-0"
+            className="object-cover  absolute h-full w-full inset-0"
           />
         ) : (
           /* Fallback skeleton */
