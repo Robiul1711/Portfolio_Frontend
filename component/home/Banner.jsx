@@ -7,12 +7,31 @@ import Link from "next/link";
 import CommonButton from "../common/CommonButton";
 import ReactAudioPlayer from "react-audio-player";
 import { FlipWords } from "@/components/ui/flipwords";
+import ParticleBackground from "../common/ParticleBackground";
 
 const Banner = () => {
   const [mounted, setMounted] = useState(false);
+  const [resumeUrl, setResumeUrl] = useState(
+    "https://drive.google.com/file/d/1YB6dyTDSrI1PcucDpxJZsw7KNvL2S1m4/view?usp=sharing"
+  );
 
   useEffect(() => {
     setMounted(true);
+    const fetchResume = async () => {
+      try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+        const res = await fetch(`${apiUrl}/api/resume`);
+        if (res.ok) {
+          const json = await res.json();
+          if (json?.data?.resumeUrl) {
+            setResumeUrl(json.data.resumeUrl);
+          }
+        }
+      } catch (e) {
+        // Fallback
+      }
+    };
+    fetchResume();
   }, []);
 
   const actionKeywords = [
@@ -27,6 +46,9 @@ const Banner = () => {
 
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-20 overflow-hidden">
+      {/* 3D Interactive Constellation Particle Canvas */}
+      <ParticleBackground />
+
       {/* Animated Background Elements */}
       <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
         {/* Main glow */}
@@ -151,7 +173,7 @@ const Banner = () => {
             <CommonButton text="Get In Touch" link="/contact" />
           </div>
           <a
-            href="https://drive.google.com/file/d/1YB6dyTDSrI1PcucDpxJZsw7KNvL2S1m4/view?usp=sharing"
+            href={resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-2.5 2xl:px-8 2xl:py-3 rounded-full border border-cyan-500/30 bg-cyan-500/5 

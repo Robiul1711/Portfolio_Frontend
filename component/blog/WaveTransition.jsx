@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Calendar, Clock } from "lucide-react";
+import { X, Calendar, Clock, LayoutGrid, List, Sparkles } from "lucide-react";
 import PaginationComponent from "../common/PaginationComponent";
 
 const ITEMS_PER_PAGE = 6; // ✅ Limits cards per page
@@ -81,13 +81,13 @@ const WaveTransition = () => {
   if (error) return <div className="text-center py-20 text-red-500">Error: {error}</div>;
 
   return (
-    <section id="blog" className="w-full max-w-7xl mx-auto py-20">
+    <section id="blog" className="w-full max-w-7xl mx-auto py-12 sm:py-16 ">
       {/* Page Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="text-center mb-16"
+        className="text-center mb-8"
       >
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-3">
           Blog &{" "}
@@ -100,14 +100,42 @@ const WaveTransition = () => {
         </p>
       </motion.div>
 
-      {/* Toggle Button */}
-      <div className="flex justify-end mb-8">
-        <button
-          onClick={toggleView}
-          className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white px-3 2xl:px-4 py-1 2xl:py-2 rounded-lg font-medium transition-colors"
-        >
-          {isGrid ? "Switch to List" : "Switch to Grid"}
-        </button>
+      {/* Balanced Control Bar: Article Count (Left) & Segmented View Switcher (Right) */}
+      <div className="flex items-center justify-between gap-4 mb-6 pb-2">
+        <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/60 border border-slate-800 text-xs font-semibold text-cyan-400">
+          <Sparkles size={13} className="text-cyan-400" />
+          <span>{blogs.length} Technical Articles</span>
+        </div>
+
+        {/* Modern Segmented Control */}
+        <div className="flex items-center p-1 rounded-xl bg-slate-900/80 border border-slate-800 backdrop-blur-md">
+          <button
+            type="button"
+            onClick={() => setIsGrid(true)}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+              isGrid
+                ? "bg-gradient-to-r from-cyan-500 to-teal-500 text-white shadow-md shadow-cyan-500/20"
+                : "text-slate-400 hover:text-white"
+            }`}
+            title="Grid View"
+          >
+            <LayoutGrid size={14} />
+            <span className="hidden sm:inline">Grid</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setIsGrid(false)}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+              !isGrid
+                ? "bg-gradient-to-r from-cyan-500 to-teal-500 text-white shadow-md shadow-cyan-500/20"
+                : "text-slate-400 hover:text-white"
+            }`}
+            title="List View"
+          >
+            <List size={14} />
+            <span className="hidden sm:inline">List</span>
+          </button>
+        </div>
       </div>
 
       {/* Blog Grid/List Container */}

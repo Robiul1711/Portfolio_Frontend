@@ -230,7 +230,35 @@ const BlogSection = () => {
                 <p className="whitespace-pre-line leading-relaxed">
                   {selectedBlog.excerpt}
                 </p>
-                {/* Note: If you add a real 'content' field to your DB later, use that here instead of excerpt */}
+              </div>
+
+              {/* Interactive Reaction Bar */}
+              <div className="pt-6 border-t border-white/10 flex items-center justify-between">
+                <button
+                  onClick={async (e) => {
+                    e.stopPropagation();
+                    const newClaps = (selectedBlog.claps || 0) + 1;
+                    setSelectedBlog((prev) => ({ ...prev, claps: newClaps }));
+                    setBlogs((prev) =>
+                      prev.map((b) =>
+                        b._id === selectedBlog._id ? { ...b, claps: newClaps } : b
+                      )
+                    );
+                    try {
+                      await fetch(
+                        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/blogs/${selectedBlog._id}/clap`,
+                        { method: "POST" }
+                      );
+                    } catch (err) {}
+                  }}
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-pink-500/20 to-purple-500/20 border border-pink-500/30 text-pink-300 hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-lg shadow-pink-500/10"
+                >
+                  <span className="text-lg">👏</span>
+                  <span className="text-sm font-bold">
+                    {selectedBlog.claps || 0} Claps
+                  </span>
+                </button>
+                <span className="text-xs text-slate-500 font-medium">Click to show appreciation</span>
               </div>
             </div>
           </div>
