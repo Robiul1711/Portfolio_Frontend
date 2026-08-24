@@ -1,7 +1,9 @@
-import React from 'react';
-import { Briefcase, GraduationCap, Code, Rocket, Award } from 'lucide-react';
+"use client";
 
-const timeline = [
+import React, { useState, useEffect } from "react";
+import { Briefcase, GraduationCap, Code } from "lucide-react";
+
+const DEFAULT_TIMELINE = [
   {
     year: "2024 - Present",
     title: "Frontend Developer",
@@ -9,7 +11,8 @@ const timeline = [
     description:
       "Architecting responsive web applications with React.js and Next.js. Leading the integration of secure JWT authentication and complex state management using Redux and Context API within MERN stack environments.",
     skills: ["React.js", "Next.js", "JWT", "Redux", "MERN Stack"],
-    status: "Current"
+    status: "Current",
+    type: "Experience",
   },
   {
     year: "2023 - 2024",
@@ -18,6 +21,7 @@ const timeline = [
     description:
       "Completed a comprehensive one-year professional training program. Mastered full-stack architecture, focusing on building scalable MongoDB schemas and robust Node/Express backends.",
     skills: ["MongoDB", "Express.js", "Node.js", "Rest API"],
+    type: "Experience",
   },
   {
     year: "2022 - 2024",
@@ -26,6 +30,7 @@ const timeline = [
     description:
       "Taught Chemistry and Physics to diploma-level students. Improved academic outcomes by translating complex theoretical concepts into practical, real-world engineering applications.",
     skills: ["Physics", "Chemistry", "Analytical Thinking", "Mentorship"],
+    type: "Experience",
   },
   {
     year: "2023",
@@ -34,11 +39,31 @@ const timeline = [
     description:
       "Graduated with a Master of Science, developing strong analytical research skills and a methodical approach to problem-solving that now informs my software debugging and architecture.",
     skills: ["Analytical Chemistry", "Research", "Scientific Method"],
-    icon: <GraduationCap size={24} />
+    type: "Education",
   },
 ];
 
 const TimelineSection = () => {
+  const [timelineItems, setTimelineItems] = useState(DEFAULT_TIMELINE);
+
+  useEffect(() => {
+    const fetchExperiences = async () => {
+      try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+        const res = await fetch(`${apiUrl}/api/experiences`);
+        if (res.ok) {
+          const json = await res.json();
+          if (json?.data?.length > 0) {
+            setTimelineItems(json.data);
+          }
+        }
+      } catch (e) {
+        // Fallback
+      }
+    };
+    fetchExperiences();
+  }, []);
+
   return (
     <section id="experience" className="relative w-full min-h-screen bg-[#030712] section-padding-y px-4 overflow-hidden">
       {/* Background Ambient Glows */}
@@ -71,8 +96,8 @@ const TimelineSection = () => {
           <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-500 via-slate-800 to-transparent"></div>
 
           <div className="space-y-12">
-            {timeline.map((item, index) => (
-              <div key={index} className="relative pl-12 md:pl-20 group">
+            {timelineItems.map((item, index) => (
+              <div key={item._id || index} className="relative pl-12 md:pl-20 group">
                 {/* Timeline Node */}
                 <div className="absolute left-[11px] md:left-[27px] top-2">
                   <div className="w-2.5 h-2.5 rounded-full bg-cyan-500 ring-4 ring-[#030712] shadow-[0_0_15px_rgba(34,211,238,0.8)] z-20 group-hover:scale-150 transition-transform duration-300"></div>
@@ -84,10 +109,10 @@ const TimelineSection = () => {
                     <span className="text-xl font-black text-white group-hover:text-cyan-400 transition-colors">
                       {item.year}
                     </span>
-                    {item.status && (
+                    {item.status === "Current" && (
                       <span className="text-[10px] font-bold uppercase tracking-widest text-cyan-400 flex items-center gap-1 mt-1">
                         <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"></span>
-                        {item.status}
+                        Current
                       </span>
                     )}
                   </div>
@@ -104,7 +129,11 @@ const TimelineSection = () => {
                         </span>
                       </div>
                       <div className="text-slate-700 group-hover:text-cyan-500/50 transition-colors">
-                         {item.icon || <Code size={24} />}
+                        {item.type === "Education" ? (
+                          <GraduationCap size={24} />
+                        ) : (
+                          <Code size={24} />
+                        )}
                       </div>
                     </div>
 
@@ -113,16 +142,18 @@ const TimelineSection = () => {
                     </p>
 
                     {/* Skills Grid */}
-                    <div className="flex flex-wrap gap-3">
-                      {item.skills.map((skill, i) => (
-                        <span
-                          key={i}
-                          className="px-4 py-1.5 rounded-xl text-xs font-bold text-slate-300 bg-slate-900 border border-slate-800 group-hover:border-cyan-500/30 transition-all"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
+                    {item.skills?.length > 0 && (
+                      <div className="flex flex-wrap gap-3">
+                        {item.skills.map((skill, i) => (
+                          <span
+                            key={i}
+                            className="px-4 py-1.5 rounded-xl text-xs font-bold text-slate-300 bg-slate-900 border border-slate-800 group-hover:border-cyan-500/30 transition-all"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
