@@ -4,23 +4,27 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import profileImg from "@/public/images/portfolio.png";
 import { useRef } from "react";
-import { 
-  FiCode, 
-  FiCpu, 
-  FiLayers, 
-  FiServer, 
-  FiZap, 
+import {
+  FiCode,
+  FiCpu,
+  FiLayers,
+  FiServer,
+  FiZap,
   FiGlobe,
   FiDatabase,
   FiSmartphone,
   FiAward,
   FiCoffee,
-  FiTrendingUp
+  FiTrendingUp,
 } from "react-icons/fi";
+import { SiSupabase, SiN8N } from "react-icons/si";
+
 const skills = [
   { name: "React", icon: <FiCode />, color: "#61DAFB" },
   { name: "Next.js", icon: <FiServer />, color: "#ffffff" },
   { name: "Node.js", icon: <FiCpu />, color: "#68A063" },
+  { name: "Supabase", icon: <SiSupabase />, color: "#3ECF8E" },
+  { name: "n8n Automation", icon: <SiN8N />, color: "#EA4B71" },
   { name: "MongoDB", icon: <FiDatabase />, color: "#4DB33D" },
   { name: "UI/UX", icon: <FiLayers />, color: "#FFB800" },
   { name: "Performance", icon: <FiZap />, color: "#22D3EE" },
@@ -30,12 +34,11 @@ export default function AboutPage() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end start"]
+    offset: ["start start", "end start"],
   });
 
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.3]);
-
 
   const stats = [
     { number: "50+", label: "Projects", icon: <FiCode />, suffix: "" },
@@ -48,41 +51,32 @@ export default function AboutPage() {
     {
       icon: <FiCpu />,
       title: "Full Stack Development",
-      description: "End-to-end web solutions with modern frameworks"
+      description: "End-to-end web solutions with Next.js, React & Node.js",
+    },
+    {
+      icon: <SiN8N className="text-[#EA4B71]" />,
+      title: "Workflow Automation (n8n)",
+      description: "Automated pipelines, webhook integrations & AI flows",
+    },
+    {
+      icon: <SiSupabase className="text-[#3ECF8E]" />,
+      title: "Supabase & Backend BaaS",
+      description: "Real-time DB, Auth, PostgreSQL & edge functions",
     },
     {
       icon: <FiSmartphone />,
-      title: "Responsive Design",
-      description: "Pixel-perfect designs across all devices"
+      title: "Responsive & Modern UI",
+      description: "Pixel-perfect, high-performance interfaces",
     },
-    {
-      icon: <FiServer />,
-      title: "API Development",
-      description: "RESTful & GraphQL APIs with Node.js"
-    },
-    {
-      icon: <FiDatabase />,
-      title: "Database Design",
-      description: "Scalable database architecture"
-    },
-    // {
-    //   icon: <FiLayers />,
-    //   title: "UI/UX Design",
-    //   description: "Intuitive and engaging user interfaces"
-    // },
-    // {
-    //   icon: <FiZap />,
-    //   title: "Performance",
-    //   description: "Optimized, fast-loading applications"
-    // },
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-b  from-[#09161a]/50 to-black text-white overflow-hidden">
-
       {/* Main Content */}
-      <div ref={containerRef} className="relative z-10 section-padding-x section-padding-y max-w-[1540px] mx-auto">
-        
+      <div
+        ref={containerRef}
+        className="relative z-10 section-padding-x section-padding-y max-w-[1540px] mx-auto"
+      >
         {/* Animated Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -99,25 +93,23 @@ export default function AboutPage() {
             <FiCoffee className="inline mr-2" />
             PASSIONATE DEVELOPER
           </motion.span>
-          
-     
-         <h2 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-7xl font-bold text-white mb-6 tracking-tight">
-                  Crafting 
-           
+
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
+            Crafting{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-            Digital  
+              Digital
             </span>{" "}
-         Experiences
+            Experiences
           </h2>
-         
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
           >
-            I transform complex problems into elegant, performant solutions with cutting-edge web technologies
+            I transform complex problems into elegant, performant solutions with
+            cutting-edge web technologies
           </motion.p>
         </motion.div>
 
@@ -134,7 +126,7 @@ export default function AboutPage() {
             <div className="relative w-full max-w-lg mx-auto">
               {/* Gradient Border */}
               <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-3xl blur-xl opacity-30"></div>
-              
+
               {/* Main Image Container */}
               <motion.div
                 whileHover={{ scale: 1.02 }}
@@ -150,11 +142,15 @@ export default function AboutPage() {
                   priority
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
-                
+
                 {/* Floating Tech Icons */}
                 <motion.div
                   animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  transition={{
+                    duration: 20,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
                   className="absolute -top-6 -right-6 w-32 h-32"
                 >
                   {skills?.map((skill, idx) => (
@@ -187,14 +183,18 @@ export default function AboutPage() {
                     <div className="flex items-center justify-between">
                       <div>
                         <div className="flex items-baseline">
-                          <span className="text-2xl font-bold">{stat.number}</span>
-                          <span className="text-cyan-400 font-bold">{stat.suffix}</span>
+                          <span className="text-2xl font-bold">
+                            {stat.number}
+                          </span>
+                          <span className="text-cyan-400 font-bold">
+                            {stat.suffix}
+                          </span>
                         </div>
-                        <div className="text-sm text-gray-400">{stat.label}</div>
+                        <div className="text-sm text-gray-400">
+                          {stat.label}
+                        </div>
                       </div>
-                      <div className="text-cyan-400 text-xl">
-                        {stat.icon}
-                      </div>
+                      <div className="text-cyan-400 text-xl">{stat.icon}</div>
                     </div>
                   </motion.div>
                 ))}
@@ -221,7 +221,7 @@ export default function AboutPage() {
               >
                 Full-Stack Developer & Problem Solver
               </motion.h2>
-              
+
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -229,9 +229,11 @@ export default function AboutPage() {
                 viewport={{ once: true }}
                 className="text-gray-300 text-lg leading-relaxed"
               >
-                With over 3 years of professional experience, I specialize in building scalable, 
-                high-performance web applications using the MERN stack. My passion lies in creating 
-                seamless user experiences that combine aesthetic design with technical excellence.
+                With over 3 years of professional experience, I specialize in
+                building scalable, high-performance web applications using the
+                MERN stack. My passion lies in creating seamless user
+                experiences that combine aesthetic design with technical
+                excellence.
               </motion.p>
 
               <motion.p
@@ -241,9 +243,10 @@ export default function AboutPage() {
                 viewport={{ once: true }}
                 className="text-gray-300 text-lg leading-relaxed"
               >
-                I believe in writing clean, maintainable code and following best practices to ensure 
-                projects are scalable, efficient, and future-proof. Every project is an opportunity 
-                to learn, innovate, and push the boundaries of what's possible on the web.
+                I believe in writing clean, maintainable code and following best
+                practices to ensure projects are scalable, efficient, and
+                future-proof. Every project is an opportunity to learn,
+                innovate, and push the boundaries of what's possible on the web.
               </motion.p>
             </div>
 
@@ -260,27 +263,33 @@ export default function AboutPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: idx * 0.1 }}
                     viewport={{ once: true }}
-                    whileHover={{ scale: 1.05, backgroundColor: "rgba(8, 47, 73, 0.5)" }}
+                    whileHover={{
+                      scale: 1.05,
+                      backgroundColor: "rgba(8, 47, 73, 0.5)",
+                    }}
                     className="group bg-gray-900/40 backdrop-blur-sm border border-gray-800 rounded-xl p-4 cursor-pointer transition-all"
                   >
                     <div className="flex items-start gap-4">
                       <div className="p-2 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-lg group-hover:scale-110 transition-transform">
-                        <span className="text-cyan-400 text-xl">{service.icon}</span>
+                        <span className="text-cyan-400 text-xl">
+                          {service.icon}
+                        </span>
                       </div>
                       <div>
-                        <h4 className="font-semibold text-gray-200 mb-1">{service.title}</h4>
-                        <p className="text-sm text-gray-400">{service.description}</p>
+                        <h4 className="font-semibold text-gray-200 mb-1">
+                          {service.title}
+                        </h4>
+                        <p className="text-sm text-gray-400">
+                          {service.description}
+                        </p>
                       </div>
                     </div>
                   </motion.div>
                 ))}
               </div>
             </div>
-
-   
           </motion.div>
         </div>
-
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ const useAxiosSecure = () => {
   const access_token = auth?.user?.token;
 
   const axiosSecure = axios.create({
-    baseURL: import.meta.env.NEXT_PUBLIC_API_URL,
+    baseURL: process.env.NEXT_PUBLIC_API_URL,
     timeout: 30000,
   });
 

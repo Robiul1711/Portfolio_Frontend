@@ -17,11 +17,12 @@ const Banner = () => {
 
   const actionKeywords = [
     "developing scalable apps",
-    "architecting systems",
+    "Supabase & MERN stacks",
+    "n8n workflow automations",
     "optimizing performance",
     "building modern web apps",
-    "deploying products",
-    "crafting experiences",
+    "deploying full-stack products",
+    "crafting digital experiences",
   ];
 
   return (
@@ -144,33 +145,25 @@ const Banner = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="mt-4 md:mt-6 2xl:mt-10 flex flex-col sm:flex-row items-center justify-center z-50 gap-4 hidden sm:flex"
+          className="mt-6 md:mt-8 2xl:mt-10 flex flex-wrap items-center justify-center z-50 gap-4"
         >
           <div className="z-50">
             <CommonButton text="Get In Touch" link="/contact" />
           </div>
-          {/* <a
-      href="./RobiulIslamResume.pdf" // Path to your file in the 'public' folder
-      download="Robiul_Islam_Resume.pdf" // The name the file will have when downloaded
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center gap-2 px-6 py-3 font-semibold text-white transition-all bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 active:scale-95"
-    >
-      <span>Download Resume</span>
-      <Download size={20} />
-    </a> */}
           <a
-            href="https://drive.google.com/file/d/1CVXsLKUY71ClID9RSpiGm_Pe4ANrSFEj/view?usp=sharing"
-            download
+            href="https://drive.google.com/file/d/1YB6dyTDSrI1PcucDpxJZsw7KNvL2S1m4/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            className="2xl:px-8 px-5 py-1.5 2xl:py-2.5 rounded-full border border-gray-400/40 
-             hover:border-cyan-400/60 hover:bg-cyan-400/10 
-             text-gray-300 font-medium z-40 transition-all 
-             duration-300 hover:scale-105 flex items-center gap-2 group"
+            className="px-6 py-2.5 2xl:px-8 2xl:py-3 rounded-full border border-cyan-500/30 bg-cyan-500/5 
+             hover:bg-cyan-500/10 hover:border-cyan-400/60 hover:shadow-[0_0_25px_rgba(34,211,238,0.25)] 
+             text-cyan-300 font-medium z-40 transition-all 
+             duration-300 hover:scale-105 flex items-center gap-2 group cursor-pointer"
           >
             <span>Download Resume</span>
-            <Download size={20} />
+            <Download
+              size={18}
+              className="text-cyan-400 group-hover:translate-y-0.5 transition-transform"
+            />
           </a>
         </motion.div>
 

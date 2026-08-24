@@ -1,10 +1,8 @@
 import axios from "axios";
-console.log(import.meta.env.NEXT_PUBLIC_API_URL);
-const useAxiosPublic = () => {
 
- 
+const useAxiosPublic = () => {
   const axiosPublic = axios.create({
-    baseURL: import.meta.env.NEXT_PUBLIC_API_URL,
+    baseURL: process.env.NEXT_PUBLIC_API_URL,
     timeout: 30000,
   });
   axiosPublic.interceptors.request.use((config) => {

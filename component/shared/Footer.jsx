@@ -168,9 +168,7 @@ const Footer = () => {
                     <p className="text-xs text-gray-400 uppercase tracking-wider font-bold">
                       Location
                     </p>
-                    <p className="text-xs  text-gray-300">
-                      Dhaka, Bangladesh
-                    </p>
+                    <p className="text-xs  text-gray-300">Dhaka, Bangladesh</p>
                   </div>
                 </div>
               </div>

@@ -60,8 +60,36 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Robiul Islam Ashiq",
+    jobTitle: "Full Stack Developer",
+    url: "https://yourportfolio.com",
+    sameAs: [
+      "https://github.com/Robiul1711",
+      "https://www.linkedin.com/in/robiul-islam-ashiq"
+    ],
+    knowsAbout: [
+      "JavaScript",
+      "React",
+      "Next.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Tailwind CSS",
+      "Full Stack Development"
+    ]
+  };
+
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
       <PreLoader>
         <SocialSidebar />

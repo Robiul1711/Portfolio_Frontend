@@ -30,14 +30,15 @@ export default function MainContactPage() {
           </div>
    
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-7xl font-extrabold tracking-tight mb-6 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent">
-            Let&apos;s Build Something <br className="hidden md:block" />{" "}
-            Together
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
+            Let&apos;s Build Something{" "}
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+              Together
+            </span>
           </h1>
 
-          <p className="text-gray-400 sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Have a project in mind or just want to say hi? My inbox is always
-            open. I’ll do my best to get back to you as soon as possible!
+          <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+            Have a project in mind or just want to say hi? My inbox is always open. I’ll do my best to get back to you as soon as possible!
           </p>
         </motion.div>
 

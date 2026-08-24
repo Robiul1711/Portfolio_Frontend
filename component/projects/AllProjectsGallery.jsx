@@ -1,11 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useInView,
-} from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import {
   Play,
   X,
@@ -39,8 +35,7 @@ const projects = [
   {
     _id: "69354ed548afea7d53226e8c",
     title: "Sapiente fuga Dolorum aut tempor commod",
-    description:
-      "Quis dolores ullam saepe et suscipit harsdfgdfgdfsgfdgfddfg",
+    description: "Quis dolores ullam saepe et suscipit harsdfgdfgdfsgfdgfddfg",
     stack: "React Native",
     technologies: ["React", "Next", "JavaScript"],
     github: "Optio nostrud et in sed veniam volupta",
@@ -100,8 +95,8 @@ const useScrollAnimation = () => {
   };
 };
 
-const AllProjectsGallery =  () => {
- const [projectsData, setProjectsData] = useState([]);
+const AllProjectsGallery = () => {
+  const [projectsData, setProjectsData] = useState([]);
 
   useEffect(() => {
     async function loadProjects() {
@@ -110,50 +105,48 @@ const AllProjectsGallery =  () => {
     }
     loadProjects();
   }, []);
-  console.log(projectsData)
+  console.log(projectsData);
   const [selectedProject, setSelectedProject] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [stack, setStack] = useState("all");
   const [imageError, setImageError] = useState({});
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  
+
   const ref = useRef(null);
   const modalRef = useRef(null);
   const isInView = useInView(ref, {
     once: true,
     amount: 0.1,
   });
-  
+
   const { containerAnimation, itemAnimation } = useScrollAnimation();
-  
+
   // Get unique stacks from projects
-const stackOptions = useMemo(() => {
-  const stacks = new Set(projectsData?.map(project => project?.stack));
-  return ["all", ...Array.from(stacks).map(item => item.toLowerCase())];
-}, [projectsData]);
+  const stackOptions = useMemo(() => {
+    const stacks = new Set(projectsData?.map((project) => project?.stack));
+    return ["all", ...Array.from(stacks).map((item) => item.toLowerCase())];
+  }, [projectsData]);
 
-
-const filteredProjects = useMemo(() => {
-  return projectsData.filter((project) => {
-    const matchesStack =
-      stack === "all" || project.stack.toLowerCase() === stack;
-    return matchesStack;
-  });
-}, [stack, projectsData]);
-
+  const filteredProjects = useMemo(() => {
+    return projectsData.filter((project) => {
+      const matchesStack =
+        stack === "all" || project.stack.toLowerCase() === stack;
+      return matchesStack;
+    });
+  }, [stack, projectsData]);
 
   const openProject = useCallback(
     (project) => {
       const projectIndex = filteredProjects.findIndex(
-        (p) => p._id === project._id
+        (p) => p._id === project._id,
       );
       setCurrentProjectIndex(projectIndex);
       setSelectedProject(project);
       setIsPlaying(false);
       document.body.style.overflow = "hidden";
     },
-    [filteredProjects]
+    [filteredProjects],
   );
 
   const closeProject = useCallback(() => {
@@ -174,7 +167,7 @@ const filteredProjects = useMemo(() => {
       setSelectedProject(filteredProjects[newIndex]);
       setIsPlaying(false);
     },
-    [currentProjectIndex, filteredProjects]
+    [currentProjectIndex, filteredProjects],
   );
 
   const toggleFullscreen = useCallback(() => {
@@ -198,7 +191,7 @@ const filteredProjects = useMemo(() => {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (!selectedProject) return;
-      
+
       switch (e.key) {
         case "Escape":
           closeProject();
@@ -229,7 +222,7 @@ const filteredProjects = useMemo(() => {
           break;
       }
     };
-    
+
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [
@@ -247,7 +240,6 @@ const filteredProjects = useMemo(() => {
       [id]: true,
     }));
   };
-
 
   const cardHoverAnimation = {
     scale: 1.03,
@@ -273,20 +265,22 @@ const filteredProjects = useMemo(() => {
         >
           <motion.h2
             variants={itemAnimation}
-            className="text-3xl sm:text-4xl md:text-5xl 2xl:text-7xl font-extrabold tracking-tight mb-6 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 text-white"
           >
-            My Projects Gallery
+            My Projects{" "}
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+              Gallery
+            </span>
           </motion.h2>
           <motion.div
             variants={itemAnimation}
-            className="w-24 h-1 bg-white mx-auto mb-6"
+            className="w-16 h-0.5 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto mb-4"
           />
           <motion.p
             variants={itemAnimation}
-            className="text-gray-300 max-w-4xl mx-auto sm:text-lg md:text-xl leading-relaxed"
+            className="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed"
           >
             Explore my portfolio of projects showcasing various technologies and solutions.
- 
           </motion.p>
         </motion.div>
 
@@ -296,30 +290,29 @@ const filteredProjects = useMemo(() => {
           animate={isInView ? "visible" : "hidden"}
           className="mb-10 sm:mb-16"
         >
-        <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
-  <AnimatePresence>
-    {stackOptions.map((stackItem, index) => (
-      <motion.button
-        key={stackItem + index}  // unique key so animation triggers after reload
-        initial={{ opacity: 0, y: 20 }}   // animate on first render
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
-        transition={{ duration: 0.3, delay: index * 0.1 }}
-        className={`px-4 py-2 rounded cursor-pointer uppercase tracking-wider text-xs  sm:text-smfont-semibold transition-all duration-300 ${
-          stack === stackItem
-            ? "bg-white text-black"
-            : "border border-gray-600 text-gray-200 hover:border-white hover:text-white"
-        }`}
-        onClick={() => setStack(stackItem)}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        {stackItem.charAt(0).toUpperCase() + stackItem.slice(1)}
-      </motion.button>
-    ))}
-  </AnimatePresence>
-</div>
-
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+            <AnimatePresence>
+              {stackOptions.map((stackItem, index) => (
+                <motion.button
+                  key={stackItem + index} // unique key so animation triggers after reload
+                  initial={{ opacity: 0, y: 20 }} // animate on first render
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  className={`px-4 py-2 rounded cursor-pointer uppercase tracking-wider text-xs  sm:text-smfont-semibold transition-all duration-300 ${
+                    stack === stackItem
+                      ? "bg-white text-black"
+                      : "border border-gray-600 text-gray-200 hover:border-white hover:text-white"
+                  }`}
+                  onClick={() => setStack(stackItem)}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {stackItem.charAt(0).toUpperCase() + stackItem.slice(1)}
+                </motion.button>
+              ))}
+            </AnimatePresence>
+          </div>
         </motion.div>
 
         <motion.div
@@ -335,7 +328,7 @@ const filteredProjects = useMemo(() => {
                 layout
                 key={project._id}
                 variants={itemAnimation}
-                className="relative group cursor-pointer rounded-xl overflow-hidden h-48 xl:h-58 2xl:h-80 bg-gray-900 border border-gray-800"
+                className="relative group cursor-pointer rounded-xl overflow-hidden h-48 xl:h-58 bg-gray-900 border border-gray-800"
                 onClick={() => openProject(project)}
                 whileHover={cardHoverAnimation}
                 initial={{
@@ -460,7 +453,7 @@ const filteredProjects = useMemo(() => {
       <AnimatePresence>
         {selectedProject && (
           <motion.div
-            className={`fixed inset-0 z-[999] flex items-center justify-center bg-black/95 p-4 sm:p-6 ${
+            className={`fixed inset-0 z-999 flex items-center justify-center bg-black/95 p-4 sm:p-6 ${
               isFullscreen ? "p-0" : ""
             }`}
             initial={{
@@ -624,11 +617,11 @@ const filteredProjects = useMemo(() => {
                       )}
                     </div>
                   </div>
-                  
+
                   <p className="text-gray-200 mb-8 text-base sm:text-lg leading-relaxed">
                     {selectedProject.description}
                   </p>
-                  
+
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div>
                       <h3 className="text-white font-semibold mb-4 text-lg">
@@ -639,22 +632,30 @@ const filteredProjects = useMemo(() => {
                           <span className="font-semibold">Stack:</span>{" "}
                           {selectedProject.stack}
                         </li>
-                        {
-                          selectedProject.popular && (
-                            <li>
-                              <span className="font-semibold">Status:</span>{" "}
-                              {selectedProject.popular ? "Popular" : "Not Popular"}
-                            </li>
-                          )
-                        }
-               
+                        {selectedProject.popular && (
+                          <li>
+                            <span className="font-semibold">Status:</span>{" "}
+                            {selectedProject.popular
+                              ? "Popular"
+                              : "Not Popular"}
+                          </li>
+                        )}
+
                         <li>
                           <span className="font-semibold">Created:</span>{" "}
-                          {selectedProject.createdAt ? new Date(selectedProject.createdAt).toLocaleDateString() : "Unknown"}
+                          {selectedProject.createdAt
+                            ? new Date(
+                                selectedProject.createdAt,
+                              ).toLocaleDateString()
+                            : "Unknown"}
                         </li>
                         <li>
                           <span className="font-semibold">Updated:</span>{" "}
-                          {selectedProject.updatedAt ? new Date(selectedProject.updatedAt).toLocaleDateString() : "Unknown"}
+                          {selectedProject.updatedAt
+                            ? new Date(
+                                selectedProject.updatedAt,
+                              ).toLocaleDateString()
+                            : "Unknown"}
                         </li>
                       </ul>
                     </div>
@@ -662,7 +663,8 @@ const filteredProjects = useMemo(() => {
                       <h3 className="text-white font-semibold mb-4 text-lg">
                         Technologies Used
                       </h3>
-                      {selectedProject.technologies && selectedProject.technologies.length > 0 ? (
+                      {selectedProject.technologies &&
+                      selectedProject.technologies.length > 0 ? (
                         <div className="flex flex-wrap gap-2">
                           {selectedProject.technologies.map((tech, index) => (
                             <span
@@ -674,7 +676,9 @@ const filteredProjects = useMemo(() => {
                           ))}
                         </div>
                       ) : (
-                        <p className="text-gray-400">No technologies specified</p>
+                        <p className="text-gray-400">
+                          No technologies specified
+                        </p>
                       )}
                     </div>
                   </div>
