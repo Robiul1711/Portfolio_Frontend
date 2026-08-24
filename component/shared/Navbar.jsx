@@ -143,7 +143,7 @@ const Navbar = () => {
         {/* Right actions */}
         <div className="flex items-center gap-6">
 <a
-            href="https://drive.google.com/file/d/1CVXsLKUY71ClID9RSpiGm_Pe4ANrSFEj/view?usp=sharing"
+            href="https://drive.google.com/file/d/1YB6dyTDSrI1PcucDpxJZsw7KNvL2S1m4/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="
