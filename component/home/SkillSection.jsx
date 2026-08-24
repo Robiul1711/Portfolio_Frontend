@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import OrbitingSkills from "../common/OrbitingSkills";
 import {
@@ -12,8 +13,9 @@ import {
   SiSupabase,
   SiN8N,
 } from "react-icons/si";
+import { FiCode, FiLayers, FiCpu } from "react-icons/fi";
 
-const skillsLevel = [
+const DEFAULT_SKILLS = [
   { icon: <SiReact />, name: "React.js", level: 95, color: "#61DAFB" },
   { icon: <SiNextdotjs />, name: "Next.js", level: 90, color: "#ffffff" },
   { icon: <SiTypescript />, name: "TypeScript", level: 85, color: "#3178C6" },
@@ -24,7 +26,58 @@ const skillsLevel = [
   { icon: <SiTailwindcss />, name: "Tailwind", level: 94, color: "#06B6D4" },
 ];
 
+const ICON_MAP = {
+  SiReact: <SiReact />,
+  SiNextdotjs: <SiNextdotjs />,
+  SiTypescript: <SiTypescript />,
+  SiNodedotjs: <SiNodedotjs />,
+  SiMongodb: <SiMongodb />,
+  SiSupabase: <SiSupabase />,
+  SiN8N: <SiN8N />,
+  SiTailwindcss: <SiTailwindcss />,
+};
+
+const getSkillIcon = (name, iconName) => {
+  if (iconName && ICON_MAP[iconName]) return ICON_MAP[iconName];
+  const n = name.toLowerCase();
+  if (n.includes("react")) return <SiReact />;
+  if (n.includes("next")) return <SiNextdotjs />;
+  if (n.includes("type")) return <SiTypescript />;
+  if (n.includes("node")) return <SiNodedotjs />;
+  if (n.includes("mongo")) return <SiMongodb />;
+  if (n.includes("supa")) return <SiSupabase />;
+  if (n.includes("n8n")) return <SiN8N />;
+  if (n.includes("tail")) return <SiTailwindcss />;
+  return <FiCode />;
+};
+
 const SkillSection = () => {
+  const [skillsList, setSkillsList] = useState(DEFAULT_SKILLS);
+
+  useEffect(() => {
+    const fetchSkills = async () => {
+      try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+        const res = await fetch(`${apiUrl}/api/skills`);
+        if (res.ok) {
+          const json = await res.json();
+          if (json?.data?.length > 0) {
+            const mapped = json.data.map((item) => ({
+              name: item.name,
+              level: item.level,
+              color: item.color || "#06B6D4",
+              icon: getSkillIcon(item.name, item.iconName),
+            }));
+            setSkillsList(mapped);
+          }
+        }
+      } catch (e) {
+        // Use default skills as fallback
+      }
+    };
+    fetchSkills();
+  }, []);
+
   return (
     <div className="w-full section-padding-x py-16 sm:py-24 text-white bg-[#030712]">
       <div className="max-w-7xl mx-auto">
@@ -79,12 +132,12 @@ const SkillSection = () => {
 
             {/* Progress Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-              {skillsLevel.map((skill, idx) => (
+              {skillsList.map((skill, idx) => (
                 <motion.div
-                  key={skill.name}
+                  key={skill.name + idx}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.1 }}
+                  transition={{ delay: idx * 0.05 }}
                   viewport={{ once: true }}
                   className="p-5 bg-white/[0.03] border border-white/5 rounded-2xl group hover:bg-white/[0.05] transition-all"
                 >
@@ -110,8 +163,8 @@ const SkillSection = () => {
                     <motion.div
                       initial={{ width: 0 }}
                       whileInView={{ width: `${skill.level}%` }}
-                      transition={{ duration: 1.5, ease: "circOut" }}
-                      className="h-full rounded-full bg-gradient-to-r"
+                      transition={{ duration: 1.2, ease: "circOut" }}
+                      className="h-full rounded-full"
                       style={{
                         backgroundColor: skill.color,
                         boxShadow: `0 0 10px ${skill.color}55`,
