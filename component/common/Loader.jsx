@@ -24,7 +24,7 @@ const PreLoader = ({ children }) => {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, y: -100 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#050505]"
+          className="fixed inset-0 z-9999 flex flex-col items-center justify-center bg-[#050505]"
         >
           {/* Logo Animation */}
           <motion.div
@@ -41,7 +41,7 @@ const PreLoader = ({ children }) => {
           </motion.div>
 
           {/* Progress Bar Container */}
-          <div className="w-48 h-[2px] bg-white/10 rounded-full overflow-hidden relative">
+          <div className="w-48 h-0.5 bg-white/10 rounded-full overflow-hidden relative">
             <motion.div
               initial={{ width: "0%" }}
               animate={{ width: "100%" }}
@@ -56,7 +56,7 @@ const PreLoader = ({ children }) => {
             transition={{ delay: 0.5 }}
             className="mt-4 text-cyan-400 text-xs font-bold tracking-[0.5em] uppercase"
           >
-            Loading Experience
+            MERN Stack Developer
           </motion.p>
         </motion.div>
       ) : (

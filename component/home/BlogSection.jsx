@@ -24,10 +24,12 @@ const BlogSection = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blogs`);
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/blogs`,
+        );
         const data = await response.json();
         // Limit to 3 blogs for the homepage section if desired
-        setBlogs(data.slice(0, 3)); 
+        setBlogs(data.slice(0, 3));
         setLoading(false);
       } catch (error) {
         console.error("Failed to fetch blogs:", error);
@@ -41,19 +43,22 @@ const BlogSection = () => {
   useGSAP(() => {
     if (loading) return; // Don't animate until data is ready
 
-    gsap.from([titleRef.current, subtitleRef.current, cardRef.current?.children], {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out",
-      delay: 0.2,
-      stagger: 0.1,
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 80%",
-        toggleActions: "play none none none",
+    gsap.from(
+      [titleRef.current, subtitleRef.current, cardRef.current?.children],
+      {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+        delay: 0.2,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
       },
-    });
+    );
   }, [loading]); // Re-run when loading finishes
 
   // Modal Handlers
@@ -70,7 +75,10 @@ const BlogSection = () => {
   if (loading) return null; // Or a loading spinner
 
   return (
-    <section ref={sectionRef} className="relative bg-[#0B0F19] py-32 px-6 overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="relative bg-[#0B0F19] py-10 sm:py-16 lg:py-20 xl:py-32 px-6 overflow-hidden"
+    >
       {/* Background Decor */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[128px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[128px] pointer-events-none" />
@@ -82,7 +90,7 @@ const BlogSection = () => {
             Insights
           </span>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-7xl font-bold text-white mb-6 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">
             Writing &{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
               Knowledge
@@ -90,14 +98,18 @@ const BlogSection = () => {
             Sharing
           </h2>
 
-          <p ref={subtitleRef} className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
+          <p
+            ref={subtitleRef}
+            className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed"
+          >
             Exploring the frontiers of web development, sharing insights on MERN
-            stack architecture, and documenting the journey of building scalable software.
+            stack architecture, and documenting the journey of building scalable
+            software.
           </p>
         </div>
 
         {/* Blog Grid */}
-        <div  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogs.map((blog) => (
             <div
               key={blog._id}
@@ -165,16 +177,15 @@ const BlogSection = () => {
       {selectedBlog && (
         <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 sm:p-6">
           {/* Backdrop */}
-          <div 
+          <div
             className="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity"
             onClick={closeModal}
           />
 
           {/* Modal Content */}
           <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-[#0F1623] border border-white/10 rounded-3xl shadow-2xl animate-in fade-in zoom-in duration-300">
-            
             {/* Close Button */}
-            <button 
+            <button
               onClick={closeModal}
               className="absolute top-4 right-4 z-50 p-2 rounded-full bg-black/50 text-white hover:bg-white/20 transition-colors"
             >
@@ -183,33 +194,34 @@ const BlogSection = () => {
 
             {/* Modal Image Header */}
             <div className="relative w-full h-64 sm:h-80 md:h-96">
-              <img 
-                src={selectedBlog.image} 
-                alt={selectedBlog.title} 
+              <img
+                src={selectedBlog.image}
+                alt={selectedBlog.title}
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0F1623] to-transparent" />
-              
+
               <div className="absolute bottom-6 left-6 right-6">
-                 <span className="inline-block px-3 py-1 mb-4 text-xs font-bold text-white bg-cyan-500/80 rounded-full backdrop-blur-md">
-                    {selectedBlog.tag}
-                  </span>
-                  <h2 className="text-2xl md:text-4xl font-bold text-white leading-tight">
-                    {selectedBlog.title}
-                  </h2>
+                <span className="inline-block px-3 py-1 mb-4 text-xs font-bold text-white bg-cyan-500/80 rounded-full backdrop-blur-md">
+                  {selectedBlog.tag}
+                </span>
+                <h2 className="text-2xl md:text-4xl font-bold text-white leading-tight">
+                  {selectedBlog.title}
+                </h2>
               </div>
             </div>
 
             {/* Modal Body */}
             <div className="p-6 md:p-10 space-y-6">
-              
               {/* Meta Data */}
               <div className="flex items-center gap-6 text-sm text-gray-400 border-b border-white/10 pb-6">
                 <span className="flex items-center gap-2">
-                   <Calendar className="w-4 h-4 text-cyan-400" /> {selectedBlog.date}
+                  <Calendar className="w-4 h-4 text-cyan-400" />{" "}
+                  {selectedBlog.date}
                 </span>
                 <span className="flex items-center gap-2">
-                   <Clock className="w-4 h-4 text-cyan-400" /> {selectedBlog.readTime}
+                  <Clock className="w-4 h-4 text-cyan-400" />{" "}
+                  {selectedBlog.readTime}
                 </span>
               </div>
 
@@ -220,7 +232,6 @@ const BlogSection = () => {
                 </p>
                 {/* Note: If you add a real 'content' field to your DB later, use that here instead of excerpt */}
               </div>
-
             </div>
           </div>
         </div>

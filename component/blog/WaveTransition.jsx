@@ -81,7 +81,7 @@ const WaveTransition = () => {
   if (error) return <div className="text-center py-20 text-red-500">Error: {error}</div>;
 
   return (
-    <div className="w-full max-w-7xl mx-auto  py-20">
+    <section id="blog" className="w-full max-w-7xl mx-auto py-20">
       {/* Page Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -89,10 +89,13 @@ const WaveTransition = () => {
         transition={{ duration: 0.5 }}
         className="text-center mb-16"
       >
-        <h1 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-7xl font-extrabold tracking-tight mb-6 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent">
-          Blog & Insights <br className="hidden md:block" />
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-3">
+          Blog &{" "}
+          <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+            Insights
+          </span>
         </h1>
-        <p className="text-gray-400 mt-3 max-w-xl mx-auto">
+        <p className="text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
           AI Generated Articles on React, MERN, UI animation, API architecture & modern frontend development.
         </p>
       </motion.div>
@@ -229,7 +232,7 @@ const WaveTransition = () => {
           />
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

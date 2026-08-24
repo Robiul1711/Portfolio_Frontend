@@ -14,12 +14,13 @@ const AboutMe = () => {
   ];
 
   const skills = [
-    { name: "React/Next.js", level: 95 },
-    { name: "Node.js", level: 90 },
+    { name: "React / Next.js", level: 95 },
+    { name: "Node.js / Express", level: 90 },
+    { name: "Supabase & PostgreSQL", level: 88 },
+    { name: "n8n Workflow Automation", level: 85 },
     { name: "TypeScript", level: 85 },
     { name: "MongoDB", level: 88 },
     { name: "Tailwind CSS", level: 92 },
-    { name: "AWS/DevOps", level: 75 },
   ];
 
   return (
@@ -92,10 +93,10 @@ const AboutMe = () => {
 
             {/* Tech Stack Badges */}
             <div className="flex flex-wrap justify-center gap-3 mt-12">
-              {["React", "Next.js", "Node.js", "MongoDB", "TypeScript"].map((tech) => (
+              {["React", "Next.js", "Node.js", "Supabase", "n8n", "MongoDB", "TypeScript"].map((tech) => (
                 <span
                   key={tech}
-                  className="px-4 py-2 bg-gray-800 rounded-full text-sm font-medium text-gray-300 shadow-lg shadow-gray-900"
+                  className="px-4 py-2 bg-gray-800/90 border border-white/5 rounded-full text-sm font-medium text-gray-300 shadow-lg shadow-gray-900 hover:border-cyan-500/30 transition-colors"
                 >
                   {tech}
                 </span>
@@ -121,7 +122,7 @@ const AboutMe = () => {
                 </h3>
                 <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
                   <p>
-                    I'm a passionate <span className="font-semibold text-cyan-400">MERN Stack Developer</span> with over 3 years of experience in building scalable, high-performance web applications. My expertise lies in creating seamless user experiences with cutting-edge technologies.
+                    I'm a passionate <span className="font-semibold text-cyan-400">Full-Stack & MERN Developer</span> with over 3 years of experience in building scalable, high-performance web applications. My expertise spans React, Next.js, modern backend solutions with Node.js & <span className="text-emerald-400 font-semibold">Supabase</span>, and seamless workflow automations via <span className="text-rose-400 font-semibold">n8n</span>.
                   </p>
                   <p>
                     I believe in writing clean, maintainable code that not only works perfectly but also scales efficiently. My approach combines modern development practices with a keen eye for design, ensuring every project delivers both functionality and aesthetic appeal.

@@ -46,7 +46,7 @@ export default function ContactSection() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
-        }
+        },
       );
 
       if (!res.ok) throw new Error("Submission failed");
@@ -83,13 +83,13 @@ export default function ContactSection() {
             </span>
             <div className="w-16 h-0.5 bg-gradient-to-r from-cyan-500 to-transparent ml-4"></div>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-7xl font-bold text-white mb-6 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">
             Let&apos;s{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">
               Connect
             </span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
             Have a project in mind? Reach out and let&apos;s build something
             extraordinary together.
           </p>
@@ -125,7 +125,7 @@ export default function ContactSection() {
                       Email
                     </h3>
                     <p className="text-slate-400 text-xs">
-                    robiulislam.1711@gmail.com
+                      robiulislam.1711@gmail.com
                     </p>
                   </div>
                 </div>

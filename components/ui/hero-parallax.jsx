@@ -19,32 +19,32 @@ export const HeroParallax = ({ products }) => {
 
   const translateX = useSpring(
     useTransform(scrollYProgress, [0, 1], [0, 1000]),
-    springConfig
+    springConfig,
   );
   const translateXReverse = useSpring(
     useTransform(scrollYProgress, [0, 1], [0, -1000]),
-    springConfig
+    springConfig,
   );
   const rotateX = useSpring(
     useTransform(scrollYProgress, [0, 0.2], [15, 0]),
-    springConfig
+    springConfig,
   );
   const opacity = useSpring(
     useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
-    springConfig
+    springConfig,
   );
   const rotateZ = useSpring(
     useTransform(scrollYProgress, [0, 0.2], [20, 0]),
-    springConfig
+    springConfig,
   );
   const translateY = useSpring(
     useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
-    springConfig
+    springConfig,
   );
   return (
     <div
       ref={ref}
-      className="h-[280vh] pt-40 overflow-hidden  antialiased relative flex flex-col self-auto perspective-[1000px] transform-3d bg-[#0B0F19] text-white"
+      className="xl:h-[240vh] h-[270vh] sm:h-[200vh] md:h-[205vh]  lg:h-[280vh] overflow-hidden  antialiased relative flex flex-col self-auto perspective-[1000px] transform-3d "
     >
       <Header />
       <motion.div
@@ -56,32 +56,23 @@ export const HeroParallax = ({ products }) => {
         }}
         className=""
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb:12 xl:mb-20">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-10 mb-16">
           {firstRow?.map((product, i) => (
-            <ProductCard
-              product={product}
-              translate={translateX}
-              key={i}
-            />
+            <ProductCard product={product} translate={translateX} key={i} />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row  mb:12 xl:mb-20 space-x-20 ">
-          {secondRow?.map((product, i ) => (
+        <motion.div className="flex flex-row  mb-16 space-x-10  h-auto">
+          {secondRow?.map((product, i) => (
             <ProductCard
-
               product={product}
               translate={translateXReverse}
               key={i}
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
+        <motion.div className="flex flex-row-reverse space-x-reverse  space-x-10 h-auto">
           {thirdRow?.map((product, i) => (
-            <ProductCard
-              product={product}
-              translate={translateX}
-              key={i}
-            />
+            <ProductCard product={product} translate={translateX} key={i} />
           ))}
         </motion.div>
       </motion.div>
@@ -91,11 +82,14 @@ export const HeroParallax = ({ products }) => {
 
 export const Header = () => {
   return (
-    <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full  left-0 top-0">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-7xl font-bold dark:text-white">
-        What I’ve Been <br /> Working On
+    <div className="max-w-7xl relative mx-auto py-16 md:py-28 px-4 w-full left-0 top-0">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+        What I’ve Been <br />
+        <span className="bg-linear-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+          Working On
+        </span>
       </h1>
-      <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
+      <p className="max-w-2xl text-sm sm:text-base md:text-lg mt-6 text-slate-300">
         A curated collection of the applications, designs, and experiments I’ve
         built—showcasing my skills in UI development, backend architecture, and
         full-stack problem-solving.
@@ -112,10 +106,13 @@ export const ProductCard = ({ product, translate }) => {
       style={{ x: translate }}
       whileHover={{ y: -20 }}
       key={product?.title}
-      className="group/product h-90 w-[30rem] relative shrink-0"
+      className="group/product h-90 w-120 relative shrink-0"
     >
-      <Link href={product?.live || "#"} target="_blank" className="block group-hover/product:shadow-2xl">
-
+      <Link
+        href={product?.live || "#"}
+        target="_blank"
+        className="block group-hover/product:shadow-2xl"
+      >
         {/* ✅ Render Image only if src exists */}
         {imageSrc ? (
           <Image
@@ -123,7 +120,7 @@ export const ProductCard = ({ product, translate }) => {
             alt={product?.title || "Project Image"}
             width={600}
             height={600}
-            className="object-cover  absolute h-full w-full inset-0"
+            className="object-cover  absolute h-full w-full inset-0 rounded-2xl"
           />
         ) : (
           /* Fallback skeleton */
